@@ -1,20 +1,8 @@
 import React from 'react';
-import {SafeAreaView, StyleSheet, Text,} from 'react-native';
+import NavigationsStack from './navigation/NavigationStack/NavigationStack';
 
 const App = () => {
-    return (
-        <SafeAreaView>
-            <Text style={styles.sectionTitle}>Hello world!!!</Text>
-        </SafeAreaView>
-    );
+  return <NavigationsStack />;
 };
-
-const styles = StyleSheet.create({
-    sectionTitle: {
-        fontSize: 24,
-        fontWeight: '600',
-        backgroundColor: '#FFF',
-    },
-});
 
 export default App;
