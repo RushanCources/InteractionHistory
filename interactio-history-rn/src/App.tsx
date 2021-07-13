@@ -1,11 +1,10 @@
-import type {Node} from 'react';
 import React from 'react';
 import {SafeAreaView, StyleSheet, Text,} from 'react-native';
 
-const App: () => Node = () => {
+const App = () => {
     return (
         <SafeAreaView>
-            <Text style={styles.sectionTitle}>InteractionHistory!!!</Text>
+            <Text style={styles.sectionTitle}>Hello world!!!</Text>
         </SafeAreaView>
     );
 };
