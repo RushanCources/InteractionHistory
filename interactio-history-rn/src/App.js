@@ -5,7 +5,7 @@ import {SafeAreaView, StyleSheet, Text,} from 'react-native';
 const App: () => Node = () => {
     return (
         <SafeAreaView>
-            <Text style={styles.sectionTitle}>InteractionHistory</Text>
+            <Text style={styles.sectionTitle}>InteractionHistory!!!</Text>
         </SafeAreaView>
     );
 };
