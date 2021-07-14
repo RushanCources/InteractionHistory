@@ -1,13 +1,12 @@
-import type {Node} from 'react';
 import React from 'react';
 import {SafeAreaView, StyleSheet, Text} from 'react-native';
 
-const App: () => Node = () => {
-    return (
-        <SafeAreaView>
-            <Text style={styles.sectionTitle}>NewInteraction!</Text>
-        </SafeAreaView>
-    );
+const ContactDetails = () => {
+  return (
+    <SafeAreaView>
+      <Text style={styles.sectionTitle}>Welcome to Contact Details</Text>
+    </SafeAreaView>
+  );
 };
 
 const styles = StyleSheet.create({
@@ -18,4 +17,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default App;
+export default ContactDetails;
