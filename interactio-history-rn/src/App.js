@@ -3,11 +3,11 @@ import React from 'react';
 import {SafeAreaView, StyleSheet, Text} from 'react-native';
 
 const App: () => Node = () => {
-  return (
-    <SafeAreaView>
-      <Text style={styles.sectionTitle}>NewInteraction</Text>
-    </SafeAreaView>
-  );
+    return (
+        <SafeAreaView>
+            <Text style={styles.sectionTitle}>NewInteraction!</Text>
+        </SafeAreaView>
+    );
 };
 
 const styles = StyleSheet.create({
