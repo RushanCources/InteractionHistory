@@ -1,16 +1,20 @@
 import {StyleSheet} from 'react-native';
 
+const WHITE = '#fff';
+const BLUE = '#337ab7';
+const DARK_BLUE = '#183147';
+
 const stylesMain = StyleSheet.create({
   containerDarkBlue: {
     flex: 1,
 		paddingVertical: 30,
     paddingHorizontal: 10,
-    backgroundColor: '#183147',
+    backgroundColor: DARK_BLUE,
   },
   containerWhite: {
     flex: 1,
     padding: 20,
-    backgroundColor: '#fff',
+    backgroundColor: WHITE,
   },
   containerVerticalCenter: {
     flexDirection: 'row',
@@ -22,42 +26,46 @@ const stylesMain = StyleSheet.create({
 		paddingVertical: 15,
 		paddingHorizontal: 30,
     borderRadius: 10,
-    backgroundColor: '#fff'
+    backgroundColor: WHITE
 	},
   itemContainerBorderLeftDarkBlue: {
     marginBottom: 10,
     paddingLeft: 20,
     borderLeftWidth: 5,
-    borderLeftColor: '#183147',
+    borderLeftColor: DARK_BLUE,
   },
 	itemTitleBigDarkBlue: {		
     fontSize: 24,
-		color: '#183147',
+		color: DARK_BLUE,
 	},
 	itemTitleSmallBlue: {
 		fontSize: 18,
-		color: '#337ab7'
+		color: BLUE
 	},
 	itemDescrBigDarkBlue: {
 		fontSize: 24,
-		color: '#183147'
+		color: DARK_BLUE
 	},
 	itemDescrSmallDarkBlue: {
 		fontSize: 16,
-		color: '#183147'
+		color: DARK_BLUE
 	},
-	sectionNavigTitle: {
+	containerNavTitle: {
 		paddingRight: 30,
 	},
-	NavTitle: {
+	stackNavHeaderBigDarkBlue: {
+		height: 200,
+		backgroundColor: DARK_BLUE,
+	},
+	navTitle: {
 		fontSize: 40,
 		textAlign: 'center',
-		color: '#fff',
+		color: WHITE,
 	},
 	NavDescr: {
 		fontSize: 16,
 		textAlign: 'center',
-		color: '#fff',
+		color: WHITE,
 	}
 });
 
