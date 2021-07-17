@@ -1,18 +1,32 @@
 import React from 'react';
-import {SafeAreaView, Text, TouchableOpacity} from 'react-native';
+import { SafeAreaView } from 'react-native';
+import { FlatList } from 'react-native-gesture-handler';
+import ContactScreenItem from './ContactScreenItem/ContactScreenItem'
+import useContactsListData from '../../hooks/useContactsListData'
+import stylesMain from '../../styles.global'
 
-interface IContactsProps {
+interface IContactsScreenProps {
   navigation: {
     navigate: (a: string) => void;
   },
 }
 
-const ContactsScreen = ({navigation}: IContactsProps) => {
+const ContactsScreen = ({navigation}: IContactsScreenProps) => {
+  const [ContactsListData] = useContactsListData()
+
+  const navigateContactInformationScreen = () => navigation.navigate('ContactInformationScreen')
+
   return (
-    <SafeAreaView>
-      <TouchableOpacity onPress={() => navigation.navigate('ContactInformationScreen')}>
-        <Text>Oleg</Text>
-      </TouchableOpacity>
+    <SafeAreaView style={stylesMain.containerDarkBlue}>
+      <FlatList
+        data={ContactsListData}
+        keyExtractor={(item => item.id)}
+        renderItem={({ item }) =>
+          <ContactScreenItem
+            item={item}
+            navigate={navigateContactInformationScreen}
+          />}
+      />
     </SafeAreaView>
   );
 };
