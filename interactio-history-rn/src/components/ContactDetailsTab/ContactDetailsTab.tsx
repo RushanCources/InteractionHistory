@@ -1,7 +1,7 @@
 import React from 'react';
 import {SafeAreaView, Text} from 'react-native';
 
-const ContactDetails = () => {
+const ContactDetailsTab = () => {
   return (
     <SafeAreaView>
       <Text>Welcome to Contact Details</Text>
@@ -9,4 +9,4 @@ const ContactDetails = () => {
   );
 };
 
-export default ContactDetails;
+export default ContactDetailsTab;

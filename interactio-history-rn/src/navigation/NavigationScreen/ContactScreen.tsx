@@ -5,7 +5,7 @@ import ContactDetails from '../../components/ContactDetailsTab/ContactDetailsTab
 
 const Tab = createMaterialTopTabNavigator();
 
-const NavigationTab = () => {
+const ContactScreen = () => {
 	return (
 		<Tab.Navigator>
 			<Tab.Screen
@@ -22,4 +22,4 @@ const NavigationTab = () => {
 	);
 }
 
-export default NavigationTab;
+export default ContactScreen;

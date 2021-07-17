@@ -7,7 +7,7 @@ interface IContactsProps {
   },
 }
 
-const Contacts = ({navigation}: IContactsProps) => {
+const ContactsScreen = ({navigation}: IContactsProps) => {
   return (
     <SafeAreaView>
       <TouchableOpacity onPress={() => navigation.navigate('ContactInformationScreen')}>
@@ -17,4 +17,4 @@ const Contacts = ({navigation}: IContactsProps) => {
   );
 };
 
-export default Contacts;
+export default ContactsScreen;
