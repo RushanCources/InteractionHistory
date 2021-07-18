@@ -14,8 +14,6 @@ interface IContactsScreenProps {
 const ContactsScreen = ({navigation}: IContactsScreenProps) => {
   const [ContactsListData] = useContactsListData()
 
-  const navigateContactInformationScreen = () => navigation.navigate('ContactInformationScreen')
-
   return (
     <SafeAreaView style={stylesMain.containerDarkBlue}>
       <FlatList
@@ -24,7 +22,6 @@ const ContactsScreen = ({navigation}: IContactsScreenProps) => {
         renderItem={({ item }) =>
           <ContactScreenItem
             item={item}
-            navigate={navigateContactInformationScreen}
           />}
       />
     </SafeAreaView>
