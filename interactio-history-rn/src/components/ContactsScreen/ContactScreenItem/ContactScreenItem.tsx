@@ -1,9 +1,10 @@
 import React, { useContext } from 'react';
-import { Text, TouchableOpacity, View } from 'react-native';
-import stylesMain from '../../../styles.global'
+import { TouchableOpacity } from 'react-native';
 import { dataContactContext } from '../../../context/dataContactContext'
 import useContactData from '../../../hooks/useContactData';
 import navigation from '../../../navigation/navigation'
+import ContactNameBlock from '../../common/ContactNameBlock/ContactNameBlock';
+import stylesMain from '../../../styles.global'
 
 interface IContactScreenItemProps {
   item: {
@@ -13,13 +14,14 @@ interface IContactScreenItemProps {
     lastName: string,
     account: {
       name: string
+      title: string
     }
   }
 }
 
 const ContactScreenItem = ({ item }: IContactScreenItemProps) => {
   const { toggleDataContact } = useContext(dataContactContext)
-  const [ContactData] = useContactData(item.id)
+  const [{ ContactData }] = useContactData(item.id)
 
   return (
     <TouchableOpacity
@@ -27,11 +29,14 @@ const ContactScreenItem = ({ item }: IContactScreenItemProps) => {
         toggleDataContact(ContactData)
         navigation.navigate('ContactInformationScreen')
       }}>
-      <View style={stylesMain.itemContainerWhite}>
-        <Text style={stylesMain.itemTitleBigDarkBlue}>{item.firstName} {item.lastName}</Text>
-        <Text style={stylesMain.itemDescrSmallDarkBlue}>{item.jobTitle} at {item.account?.name}</Text>
-      </View>
-    </TouchableOpacity>
+        <ContactNameBlock
+          item={item}
+          styleContainer={stylesMain.itemContainerWhite}
+          styleRow={stylesMain.containerRow}
+          styleTitle={stylesMain.itemTitleBigDarkBlue}
+          styleDescr={stylesMain.itemDescrSmallDarkBlue}
+        />
+    </TouchableOpacity >
   );
 };
 

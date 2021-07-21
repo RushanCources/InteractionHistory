@@ -17,19 +17,23 @@ interface IContactData {
 
 export default function useContactData(id: string | undefined) {
   const [ContactData, setContactData] = useState<IContactData>({});
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     fetch(`https://interaction-history.herokuapp.com/contacts/${id}`)
       .then(res => res.json())
       .then(
         result => {
+          setIsLoaded(true);
           setContactData(result);
         },
         error => {
-          console.warn(error);
+          setIsLoaded(true);
+          setError(error);
         },
       );
   }, []);
 
-  return [ContactData];
+  return [{ContactData, isLoaded, error}];
 }
