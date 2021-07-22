@@ -6,20 +6,20 @@ import ContactDetails from '../../components/ContactDetailsTab/ContactDetailsTab
 const Tab = createMaterialTopTabNavigator();
 
 const ContactScreen = () => {
-	return (
-		<Tab.Navigator>
-			<Tab.Screen
-				name="ContactDetails"
-				component={ContactDetails}
-				options={{ title: 'Contact Details' }}
-			/>
-			<Tab.Screen
-				name="ContactInteractions"
-				component={ContactInteractions}
-				options={{ title: 'Contact Interactions' }}
-			/>
-		</Tab.Navigator>
-	);
-}
+  return (
+    <Tab.Navigator>
+      <Tab.Screen
+        name="ContactDetails"
+        component={ContactDetails}
+        options={{ title: 'Contact Details' }}
+      />
+      <Tab.Screen
+        name="ContactInteractions"
+        component={ContactInteractions}
+        options={{ title: 'Contact Interactions' }}
+      />
+    </Tab.Navigator>
+  );
+};
 
 export default ContactScreen;

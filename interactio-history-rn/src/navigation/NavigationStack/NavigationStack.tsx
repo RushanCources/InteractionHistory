@@ -7,22 +7,22 @@ import ContactInformationScreen from '../ContactInformationScreen/ContactInforma
 const Stack = createStackNavigator();
 
 const NavigationStack = () => {
-	return (
-		<NavigationContainer>
-			<Stack.Navigator>
-				<Stack.Screen
-					name="ContactsScreen"
-					component={ContactsScreen}
-					options={{ title: 'Contacts' }}
-				/>
-				<Stack.Screen
-					name="ContactInformationScreen"
-					component={ContactInformationScreen}
-					options={{ title: 'Contact Information' }}
-				/>
-			</Stack.Navigator>
-		</NavigationContainer>
-	);
-}
+  return (
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen
+          name="ContactsScreen"
+          component={ContactsScreen}
+          options={{ title: 'Contacts' }}
+        />
+        <Stack.Screen
+          name="ContactInformationScreen"
+          component={ContactInformationScreen}
+          options={{ title: 'Contact Information' }}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+};
 
 export default NavigationStack;

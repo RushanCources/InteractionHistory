@@ -7,7 +7,7 @@ const api = axios.create({
 });
 
 export class HTTP {
-  static HEADERS = {'Content-Type': 'application/json'};
+  static HEADERS = { 'Content-Type': 'application/json' };
 
   static async get(url: string) {
     try {
@@ -26,7 +26,7 @@ export class HTTP {
     }
   }
 
-  static async delete(url:string) {
+  static async delete(url: string) {
     try {
       return await request(url, 'delete', {});
     } catch (e) {
@@ -43,7 +43,7 @@ export class HTTP {
   }
 }
 
-async function request(url:string, methodName: string, data: {}) {
+async function request(url: string, methodName: string, data: {}) {
   const methods = new Map([
     ['post', api.post],
     ['get', api.get],
@@ -55,7 +55,7 @@ async function request(url:string, methodName: string, data: {}) {
 
   const config = {
     headers: HTTP.HEADERS,
-    body: ''
+    body: '',
   };
 
   if (methodName === 'post' || methodName === 'patch') {
@@ -63,5 +63,7 @@ async function request(url:string, methodName: string, data: {}) {
   }
   if (method) {
     return await method(url, config);
-  } else return null
+  } else {
+    return null;
+  }
 }
