@@ -3,9 +3,10 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 import ContactsScreen from '../../components/ContactsScreen/ContactsScreen';
 import ContactInformationScreen from '../ContactInformationScreen/ContactInformationScreen';
+import CreateFormScreen from '../../components/CreateFormScreen/CreateFormScreen';
 import ContactInformationTitleNavigation from './ContactDetailsTitleNav/ContactDetailsTitleNav';
-import stylesMain from '../../styles.global'
 import Navigation from '../navigation';
+import stylesMain from '../../styles.global'
 
 const Stack = createStackNavigator();
 
@@ -25,6 +26,11 @@ const NavigationStack = () => {
 						headerStyle: stylesMain.stackNavHeaderBigDarkBlue,
 						headerTitle: props => <ContactInformationTitleNavigation />,
 					}}
+        />
+        <Stack.Screen
+          name="CreateFormScreen"
+          component={CreateFormScreen}
+          options={{ title: 'Create Form' }}
         />
       </Stack.Navigator>
     </NavigationContainer>

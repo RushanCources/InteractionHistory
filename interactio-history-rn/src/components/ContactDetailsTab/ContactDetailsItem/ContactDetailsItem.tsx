@@ -1,6 +1,7 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { Linking, Text, TouchableOpacity, View } from 'react-native';
 import stylesMain from '../../../styles.global'
+import navigation from '../../../navigation/navigation';
 
 interface IContactDetailsItemsProps {
   communicationMethod: string
@@ -8,11 +9,31 @@ interface IContactDetailsItemsProps {
 }
 
 const ContactDetailsItem = ({ communicationMethod, telOrNumer }: IContactDetailsItemsProps) => {
+
+  const call = (connect: string, connectMethod: string): void => {
+    const connectURL =
+      (connectMethod === 'Skype') ? `skype:${connect}?chat` :
+        (connectMethod === 'Mail') ? `mailto:${connect}` :
+          `tel:${connect}`
+
+    Linking.openURL(connectURL)
+      .catch((error) => {
+        console.log(error)
+      })
+  }
+
   return (
-    <View style={stylesMain.itemContainerBorderLeftDarkBlue}>
-      <Text style={stylesMain.itemTitleSmallBlue}>{communicationMethod}</Text>
-      <Text style={stylesMain.itemDescrBigDarkBlue}>{telOrNumer}</Text>
-    </View>
+    <TouchableOpacity
+      onPress={() => {
+        call(telOrNumer, communicationMethod)
+        navigation.navigate('CreateFormScreen')
+      }}
+    >
+      <View style={stylesMain.itemContainerBorderLeftDarkBlue}>
+        <Text style={stylesMain.itemTitleSmallBlue}>{communicationMethod}</Text>
+        <Text style={stylesMain.itemDescrBigDarkBlue}>{telOrNumer}</Text>
+      </View>
+    </TouchableOpacity>
   );
 };
 
