@@ -1,10 +1,10 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
 import stylesMain from '../../../styles.global'
 
 interface IContactDetailsItemsProps {
   communicationMethod: string
-  telOrNumer: string | undefined
+  telOrNumer: string
 }
 
 const ContactDetailsItem = ({ communicationMethod, telOrNumer }: IContactDetailsItemsProps) => {

@@ -1,6 +1,5 @@
 import React from 'react';
-import { Text, View, SafeAreaView } from 'react-native';
-import stylesMain from '../../../styles.global'
+import { Text, View} from 'react-native';
 
 interface IContactNameBlockProps {
   item: {
@@ -11,13 +10,13 @@ interface IContactNameBlockProps {
       name: string
     }
   }
-  styleContainer: object
-  styleRow: object
-  styleTitle: object
-  styleDescr: object
+  styleContainer?: object
+  styleRow?: object
+  styleTitle?: object
+  styleDescr?: object
 }
 
-const ContactNameBlock = ({ item, styleContainer, styleRow, styleTitle, styleDescr }: IContactNameBlockProps) => {
+const ContactNameBlock = ({ item, styleContainer = {}, styleRow = {}, styleTitle = {}, styleDescr = {} }: IContactNameBlockProps) => {
 
   const firstName = item.firstName
   const lastName = item.lastName
@@ -26,11 +25,11 @@ const ContactNameBlock = ({ item, styleContainer, styleRow, styleTitle, styleDes
 
   return (
     <View style={styleContainer}>
-      {firstName && lastName
+      {firstName || lastName
         ?
         <View style={styleRow}>
           {
-            jobTitle && <Text style={styleTitle}>{firstName + ' '}</Text>
+            firstName && <Text style={styleTitle}>{firstName + ' '}</Text>
           }
           {
             lastName && <Text style={styleTitle}>{lastName}</Text>

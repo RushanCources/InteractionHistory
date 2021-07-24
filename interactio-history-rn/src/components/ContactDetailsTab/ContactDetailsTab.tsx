@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { SafeAreaView, Text } from 'react-native';
+import { Linking, SafeAreaView, Text } from 'react-native';
 import { dataContactContext } from '../../context/dataContactContext';
 import ContactDetailsItem from './ContactDetailsItem/ContactDetailsItem';
 import stylesMain from '../../styles.global';
@@ -22,17 +22,17 @@ const ContactDetailsTab = () => {
           />
         }
         {
-          email &&
-          <ContactDetailsItem
-            communicationMethod='Mail'
-            telOrNumer={email}
-          />
-        }
-        {
           work &&
           <ContactDetailsItem
             communicationMethod='Work number'
             telOrNumer={work}
+          />
+        }
+        {
+          email &&
+          <ContactDetailsItem
+            communicationMethod='Mail'
+            telOrNumer={email}
           />
         }
         {
