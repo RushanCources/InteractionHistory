@@ -25,6 +25,8 @@ DerivedData
 #
 build/
 .idea
+.vscode/
+.vscode/*
 .gradle
 local.properties
 *.iml

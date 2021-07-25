@@ -3,12 +3,15 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 import ContactsScreen from '../../components/ContactsScreen/ContactsScreen';
 import ContactInformationScreen from '../ContactInformationScreen/ContactInformationScreen';
+import ContactInformationTitleNavigation from './ContactDetailsTitleNav/ContactDetailsTitleNav';
+import stylesMain from '../../styles.global'
+import Navigation from '../navigation';
 
 const Stack = createStackNavigator();
 
 const NavigationStack = () => {
   return (
-    <NavigationContainer>
+    <NavigationContainer ref={Navigation.navigationRef}>
       <Stack.Navigator>
         <Stack.Screen
           name="ContactsScreen"
@@ -18,11 +21,14 @@ const NavigationStack = () => {
         <Stack.Screen
           name="ContactInformationScreen"
           component={ContactInformationScreen}
-          options={{ title: 'Contact Information' }}
+					options={{
+						headerStyle: stylesMain.stackNavHeaderBigDarkBlue,
+						headerTitle: props => <ContactInformationTitleNavigation />,
+					}}
         />
       </Stack.Navigator>
     </NavigationContainer>
   );
-};
+}
 
 export default NavigationStack;

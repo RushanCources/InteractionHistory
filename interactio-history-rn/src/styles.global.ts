@@ -16,8 +16,15 @@ const stylesMain = StyleSheet.create({
     padding: 20,
     backgroundColor: WHITE,
   },
-  containerVerticalCenter: {
+  containerRow: {
+    display: 'flex',
     flexDirection: 'row',
+  },
+  containerRowCenter: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+  },
+  containerVerticalCenter: {
     justifyContent: 'space-around',
     padding: 10,
   },
@@ -35,19 +42,6 @@ const stylesMain = StyleSheet.create({
     borderLeftColor: DARK_BLUE,
   },
   itemTitleBigDarkBlue: {
-    fontSize: 24,
-    color: DARK_BLUE,
-  },
-  itemTitleSmallBlue: {
-    fontSize: 18,
-    color: BLUE,
-  },
-  itemDescrBigDarkBlue: {
-    fontSize: 24,
-    color: DARK_BLUE,
-  },
-  itemDescrSmallDarkBlue: {
-    fontSize: 16,
     color: DARK_BLUE,
   },
   containerNavTitle: {
@@ -59,7 +53,6 @@ const stylesMain = StyleSheet.create({
   },
   navTitle: {
     fontSize: 40,
-    textAlign: 'center',
     color: WHITE,
   },
   NavDescr: {
