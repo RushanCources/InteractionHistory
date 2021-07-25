@@ -29,3 +29,7 @@ export type TState = {
   error: null | NetworkError;
   loading: boolean;
 };
+
+export type TStateType = {
+  interactions: TState;
+};

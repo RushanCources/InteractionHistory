@@ -1,10 +1,14 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { FlatList, SafeAreaView, Text, View, StyleSheet } from 'react-native';
+import { useDispatch, useSelector } from 'react-redux';
 import { HTTP } from '../../common/http';
+import { getInteractionResponse } from '../../store/selectors';
+import { getContactInteractions } from '../../store/slice';
 
 const ContactInteractionsTab = () => {
   const [interactions, setInteractions] = useState([]);
-
+  const dispatch = useDispatch();
+  // const interactions = useSelector(getInteractionResponse);
   const renederItem = useCallback(item => {
     return (
       <View style={styles.viewBorder}>
@@ -19,19 +23,23 @@ const ContactInteractionsTab = () => {
     );
   }, []);
 
+  // useEffect(() => {
+  //   const getItem = async () => {
+  //     try {
+  //       const response = await HTTP.get(`contacts/${1}/records`);
+  //       if (response) {
+  //         setInteractions(response.data);
+  //       }
+  //     } catch (err) {
+  //       console.log(err);
+  //     }
+  //   };
+  //   getItem();
+  // }, []);
+
   useEffect(() => {
-    const getItem = async () => {
-      try {
-        const response = await HTTP.get(`contacts/${1}/records`);
-        if (response) {
-          setInteractions(response.data);
-        }
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    getItem();
-  }, []);
+    dispatch(getContactInteractions('1'));
+  }, [dispatch]);
 
   return (
     <SafeAreaView>

@@ -10,6 +10,7 @@ export const getContactInteractions = createAsyncThunk(
       const response = (await HTTP.get(
         `contacts/${data}/records`,
       )) as unknown as Tresponse[];
+      console.log(response)
       return response;
     } catch (e) {
       return rejectWithValue(e);
