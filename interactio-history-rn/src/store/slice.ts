@@ -1,20 +1,15 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { HTTP } from '../common/http';
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { Tresponse, TState, NetworkError } from './type';
+import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
+import {Tresponse, TState, NetworkError} from './type';
+import {CONFIG} from '../config';
 
+//endpoint для запроса contact iteractions
 export const getContactInteractions = createAsyncThunk(
   'interactions/getContactInteractions',
-  async (data: string, { rejectWithValue }) => {
-    try {
-      const response = (await HTTP.get(
-        `contacts/${data}/records`,
-      )) as unknown as Tresponse[];
-      console.log(response)
-      return response;
-    } catch (e) {
-      return rejectWithValue(e);
-    }
+  async (id: number) => {
+    const response = await fetch(`${CONFIG.BASE_URL}/contacts/${id}/records`)
+      .then(res => res.json())
+      .then(result => result);
+    return response;
   },
 );
 
@@ -34,7 +29,7 @@ const interactionsSlice = createSlice({
       state.loading = true;
     });
 
-    builder.addCase(getContactInteractions.fulfilled, (state, { payload }) => {
+    builder.addCase(getContactInteractions.fulfilled, (state, {payload}) => {
       state.loading = false;
       state.response = payload as unknown as Tresponse[];
     });

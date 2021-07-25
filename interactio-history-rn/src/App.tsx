@@ -1,17 +1,19 @@
 import React from 'react';
-import { SafeAreaView } from 'react-native';
-import { Provider } from 'react-redux';
-import ContactInteractionsTab from './components/ContactInteractionsTab/ContactInteractionsTab';
+import {Provider} from 'react-redux';
+// import ContactInteractionsTab from './components/ContactInteractionsTab/ContactInteractionsTab';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import NavigationsStack from './navigation/NavigationStack/NavigationStack';
-import { DataContactContextProvider } from './context/dataContactContext';
+import {DataContactContextProvider} from './context/dataContactContext';
+import {store} from './store/store';
 
 const App = () => {
   return (
-    <DataContactContextProvider>
-      <NavigationsStack />
-    </DataContactContextProvider>
-  )
+    <Provider store={store}>
+      <DataContactContextProvider>
+        <NavigationsStack />
+      </DataContactContextProvider>
+    </Provider>
+  );
 };
 
 export default App;
