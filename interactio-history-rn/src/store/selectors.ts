@@ -5,10 +5,6 @@ const getInteractionState = (state: TStateType): TState => state.interactions;
 
 export const getInteractionResponse = createSelector(
   getInteractionState,
-  ({ response, loading, error }) => ({response, loading, error})
+  ({ response, loading, error, currentContact }) => ({response, loading, error, currentContact})
 );
 
-export const getCurrentContact = createSelector(
-  getInteractionState,
-  ({ currentContact }) => currentContact.toString()
-);

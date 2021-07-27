@@ -6,7 +6,7 @@ import LoadBlock from '../../common/LoadBlock/LoadBlock';
 import stylesMain from '../../../styles.global';
 
 const ContactInteractionsTabFunctions = (props: TState): ReactNode => {
-  const { response, loading, error } = props;
+  const { loading, error } = props;
   let result: ReactNode;
   if (loading) {
     result = <LoadBlock 
