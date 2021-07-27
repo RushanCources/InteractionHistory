@@ -24,10 +24,15 @@ export type Tresponse = {
   };
 };
 
+export type TresponseProps = {
+  data: Tresponse
+};
+
 export type TState = {
   response: Tresponse[];
   error: null | NetworkError;
   loading: boolean;
+  currentContact: string;
 };
 
 export type TStateType = {

@@ -7,3 +7,8 @@ export const getInteractionResponse = createSelector(
   getInteractionState,
   ({ response, loading, error }) => ({response, loading, error})
 );
+
+export const getCurrentContact = createSelector(
+  getInteractionState,
+  ({ currentContact }) => currentContact.toString()
+);
