@@ -12,7 +12,7 @@ const ContactInteractionsTab = () => {
   const renederItem = useCallback(item => {
     return (
       <View style={styles.viewBorder}>
-        <Text>{`data: ${item.item.date}`}</Text>
+        <Text>{`date: ${item.item.date}`}</Text>
         <Text>{`descriptions: ${item.item.description}`}</Text>
         <Text>{`contact_id: ${item.item.contact_id}`}</Text>
         <View>
