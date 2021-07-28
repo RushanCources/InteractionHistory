@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import { StyleSheet } from 'react-native';
 
 const WHITE = '#fff';
 const BLUE = '#337ab7';
@@ -24,6 +24,10 @@ const stylesMain = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
   },
+  containerRowLeft: {
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+  },
   containerVerticalCenter: {
     justifyContent: 'space-around',
     padding: 10,
@@ -42,19 +46,6 @@ const stylesMain = StyleSheet.create({
     borderLeftColor: DARK_BLUE,
   },
   itemTitleBigDarkBlue: {
-    fontSize: 24,
-    color: DARK_BLUE,
-  },
-  itemTitleSmallBlue: {
-    fontSize: 18,
-    color: BLUE,
-  },
-  itemDescrBigDarkBlue: {
-    fontSize: 24,
-    color: DARK_BLUE,
-  },
-  itemDescrSmallDarkBlue: {
-    fontSize: 16,
     color: DARK_BLUE,
   },
   containerNavTitle: {
@@ -66,7 +57,6 @@ const stylesMain = StyleSheet.create({
   },
   navTitle: {
     fontSize: 40,
-    textAlign: 'center',
     color: WHITE,
   },
   NavDescr: {
