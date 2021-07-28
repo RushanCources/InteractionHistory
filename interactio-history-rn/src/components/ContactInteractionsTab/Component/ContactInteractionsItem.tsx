@@ -12,9 +12,9 @@ const ContactInteractionsTabItem = (props: TState) => {
     const renederItem = useCallback(item => {
     return (
       <View style={stylesMain.itemContainerBorderLeftDarkBlue}>
-        <Text>{new Date(item.item.date).toLocaleString()}</Text>
-        <Text>{`${typeInteraction.get(item.item.type.id.toString())} ${item.item.type.name}`}</Text>
-        <Text>{item.item.description}</Text>
+        <Text style={stylesMain.itemTitleSmallBlue}>{new Date(item.item.date).toLocaleString()}</Text>
+        <Text style={stylesMain.itemTitleSmallBlue}>{`${typeInteraction.get(item.item.type.id.toString())} ${item.item.type.name}`}</Text>
+        <Text style={stylesMain.itemDescrBigDarkBlue}>{item.item.description}</Text>
       </View>
     );
   }, []);
