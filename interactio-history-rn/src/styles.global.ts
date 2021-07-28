@@ -1,8 +1,8 @@
-import { StyleSheet } from 'react-native';
+import {StyleSheet} from 'react-native';
 
-const WHITE = '#fff';
-const BLUE = '#337ab7';
-const DARK_BLUE = '#183147';
+export const WHITE = '#fff';
+export const BLUE = '#337ab7';
+export const DARK_BLUE = '#183147';
 
 const stylesMain = StyleSheet.create({
   containerDarkBlue: {
@@ -46,6 +46,19 @@ const stylesMain = StyleSheet.create({
     borderLeftColor: DARK_BLUE,
   },
   itemTitleBigDarkBlue: {
+    fontSize: 24,
+    color: DARK_BLUE,
+  },
+  itemTitleSmallBlue: {
+    fontSize: 18,
+    color: BLUE,
+  },
+  itemDescrBigDarkBlue: {
+    fontSize: 24,
+    color: DARK_BLUE,
+  },
+  itemDescrSmallDarkBlue: {
+    fontSize: 16,
     color: DARK_BLUE,
   },
   containerNavTitle: {
@@ -57,6 +70,7 @@ const stylesMain = StyleSheet.create({
   },
   navTitle: {
     fontSize: 40,
+    textAlign: 'center',
     color: WHITE,
   },
   NavDescr: {

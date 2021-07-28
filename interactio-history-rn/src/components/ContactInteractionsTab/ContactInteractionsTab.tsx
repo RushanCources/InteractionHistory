@@ -1,8 +1,8 @@
-import React, {useEffect} from 'react';
-import {SafeAreaView, Text, View, StyleSheet} from 'react-native';
-import {useDispatch, useSelector} from 'react-redux';
-import {getInteractionResponse} from '../../store/selectors';
-import {getContactInteractions} from '../../store/slice';
+import React, { useEffect } from 'react';
+import { SafeAreaView } from 'react-native';
+import { useDispatch, useSelector } from 'react-redux';
+import { getInteractionResponse } from '../../store/selectors';
+import { getContactInteractions } from '../../store/slice';
 import stylesMain from '../../styles.global';
 import ContactInteractionsTabFunctions from './Container';
 

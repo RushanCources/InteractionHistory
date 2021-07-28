@@ -9,7 +9,7 @@ interface ILoadBlockProps {
 
 const LoadBlock = ({ styleContainer, colorActivityIndicator }: ILoadBlockProps) => {
   return (
-    <SafeAreaView style={[stylesMain.containerVerticalCenter, stylesMain.containerDarkBlue]}>
+    <SafeAreaView style={styleContainer}>
       <ActivityIndicator size="large" color={colorActivityIndicator} />
     </SafeAreaView>
   );

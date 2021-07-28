@@ -1,15 +1,15 @@
-import React, {useCallback} from 'react';
-import {FlatList, SafeAreaView, Text, View, StyleSheet} from 'react-native';
-import {TState} from '../../../store/type';
+import React, { useCallback } from 'react';
+import { FlatList, SafeAreaView, Text, View, StyleSheet } from 'react-native';
+import { TState } from '../../../store/type';
 import stylesMain from '../../../styles.global';
 
 const ContactInteractionsTabItem = (props: TState) => {
-    const {response} = props
-    const typeInteraction = new Map([
-        ['1', 'incoming'],
-        ['2', 'outgoing'],
-      ]);
-    const renederItem = useCallback(item => {
+  const { response } = props
+  const typeInteraction = new Map([
+    ['1', 'incoming'],
+    ['2', 'outgoing'],
+  ]);
+  const renederItem = useCallback(item => {
     return (
       <View style={stylesMain.itemContainerBorderLeftDarkBlue}>
         <Text>{new Date(item.item.date).toLocaleString()}</Text>
@@ -25,11 +25,5 @@ const ContactInteractionsTabItem = (props: TState) => {
     </SafeAreaView>
   );
 };
-
-const styles = StyleSheet.create({
-  viewBorder: {
-    borderBottomWidth: 1,
-  },
-});
 
 export default React.memo(ContactInteractionsTabItem);
