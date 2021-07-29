@@ -24,10 +24,6 @@ const stylesMain = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
   },
-  containerRowLeft: {
-    flexDirection: 'row',
-    justifyContent: 'flex-start',
-  },
   containerVerticalCenter: {
     justifyContent: 'space-around',
     padding: 10,

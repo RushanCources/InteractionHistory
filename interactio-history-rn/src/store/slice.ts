@@ -8,7 +8,6 @@ export const getContactInteractions = createAsyncThunk(
   async (id: string) => {
     const response = await fetch(`${CONFIG.BASE_URL}/contacts/${id}/records`)
       .then(res => res.json())
-      .then(result => result);
     return response;
   },
 );
