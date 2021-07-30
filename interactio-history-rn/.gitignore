@@ -25,7 +25,10 @@ DerivedData
 #
 build/
 .idea
+<<<<<<< HEAD
+=======
 .vscode/
+>>>>>>> origin/vasiliy-dev
 .vscode/*
 .gradle
 local.properties
