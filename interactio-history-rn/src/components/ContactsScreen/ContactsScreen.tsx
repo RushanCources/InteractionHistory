@@ -1,23 +1,29 @@
 import React, { useEffect } from 'react';
-import { SafeAreaView } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { getContactsListResponse } from '../../store/selectors'
 import { getContactsList } from '../../store/contactsListSlice';
-import stylesMain from '../../styles.global'
-import ContactsScreenFunction from './Container';
+import stylesMain, { WHITE } from '../../styles.global'
+import LoadContainer from '../common/LoadContainer/LoadContainer';
+import ContactScreenItem from './ContactScreenItem/ContactScreenItem';
 
 const ContactsScreen = () => {
   const contactsList = useSelector(getContactsListResponse);
   const dispatch = useDispatch()
-  
+
   useEffect(() => {
     dispatch(getContactsList());
   }, [dispatch])
 
   return (
-    <SafeAreaView style={stylesMain.containerDarkBlue}>
-      {ContactsScreenFunction(contactsList)}
-    </SafeAreaView>
+    <LoadContainer
+      loading={contactsList.loading}
+      error={contactsList.error}
+      styleContainer={stylesMain.containerDarkBlue}
+      styleLoadContainer={[stylesMain.containerVerticalCenter, stylesMain.containerDarkBlue]}
+      colorload={WHITE}
+    >
+      <ContactScreenItem {...contactsList} />
+    </LoadContainer>
   );
 }
 

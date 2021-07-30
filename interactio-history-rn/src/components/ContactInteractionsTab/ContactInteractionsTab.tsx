@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
-import { SafeAreaView } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { getInteractionResponse } from '../../store/selectors';
 import { getContactInteractions } from '../../store/slice';
-import stylesMain from '../../styles.global';
-import ContactInteractionsTabFunctions from './Container';
+import stylesMain, { WHITE } from '../../styles.global';
+import LoadContainer from '../common/LoadContainer/LoadContainer';
+import ContactInteractionsItem from './Component/ContactInteractionsItem';
 
 const ContactInteractionsTab = () => {
   const interactions = useSelector(getInteractionResponse);
@@ -15,9 +15,15 @@ const ContactInteractionsTab = () => {
   }, [dispatch]);
 
   return (
-    <SafeAreaView style={[stylesMain.containerRowLeft, stylesMain.containerWhite]}>
-      {ContactInteractionsTabFunctions(interactions)}
-    </SafeAreaView>
+    <LoadContainer
+      loading={interactions.loading}
+      error={interactions.error}
+      styleContainer={stylesMain.containerWhite}
+      styleLoadContainer={[stylesMain.containerVerticalCenter, stylesMain.containerWhite]}
+      colorload={WHITE}
+    >
+      <ContactInteractionsItem {...interactions} />
+    </LoadContainer>
   );
 };
 

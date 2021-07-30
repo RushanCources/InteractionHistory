@@ -7,6 +7,7 @@ import CreateFormScreen from '../../components/CreateFormScreen/CreateFormScreen
 import ContactInformationTitleNavigation from './ContactDetailsTitleNav/ContactDetailsTitleNav';
 import Navigation from '../navigation';
 import stylesMain from '../../styles.global'
+import IconBack from './IconBack';
 
 const Stack = createStackNavigator();
 
@@ -25,6 +26,7 @@ const NavigationStack = () => {
 					options={{
 						headerStyle: stylesMain.stackNavHeaderBigDarkBlue,
 						headerTitle: props => <ContactInformationTitleNavigation />,
+            headerBackImage: () => <IconBack />,
 					}}
         />
         <Stack.Screen

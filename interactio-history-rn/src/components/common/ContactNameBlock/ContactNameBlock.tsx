@@ -1,15 +1,9 @@
 import React from 'react';
 import { Text, View } from 'react-native';
+import { TContactData } from '../../../store/type';
 
 interface IContactNameBlockProps {
-  item: {
-    firstName?: string
-    lastName?: string
-    jobTitle?: string
-    account?: {
-      name: string
-    }
-  }
+  item: TContactData
   styleContainer?: object
   styleRow?: object
   styleTitle?: object
