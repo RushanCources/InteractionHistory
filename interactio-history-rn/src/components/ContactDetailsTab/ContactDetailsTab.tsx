@@ -1,56 +1,25 @@
-import React, { useContext } from 'react';
-import { Linking, SafeAreaView, Text } from 'react-native';
-import { dataContactContext } from '../../context/dataContactContext';
-import ContactDetailsItem from './ContactDetailsItem/ContactDetailsItem';
+import React, { useEffect } from 'react';
+import { SafeAreaView, Text } from 'react-native';
+import ContactDetailsItem from './ContactDetails/ContactDetails';
 import stylesMain from '../../styles.global';
+import { useDispatch, useSelector } from 'react-redux';
+import { getContactDetailsResponse, getInteractionResponse } from '../../store/selectors';
+import { getContactDetails } from '../../store/contactDetailsSlice';
+import ContactDetailsTabFunction from './Container';
 
 const ContactDetailsTab = () => {
-  const { dataContact } = useContext(dataContactContext)
+  const { currentContact } = useSelector(getInteractionResponse);
+  const contactDetails = useSelector(getContactDetailsResponse);
+  const dispatch = useDispatch();
 
-  const mobile = dataContact.mobile;
-  const email = dataContact.email;
-  const work = dataContact.work;
-  const skype = dataContact.skype;
+  useEffect(() => {
+    dispatch(getContactDetails(currentContact));
+  }, [dispatch]);
 
-  if (mobile || email || work || skype) {
-    return (
-      <SafeAreaView style={stylesMain.containerWhite}>
-        {mobile &&
-          <ContactDetailsItem
-            communicationMethod='Mobile'
-            telOrNumer={mobile}
-          />
-        }
-        {
-          work &&
-          <ContactDetailsItem
-            communicationMethod='Work number'
-            telOrNumer={work}
-          />
-        }
-        {
-          email &&
-          <ContactDetailsItem
-            communicationMethod='Mail'
-            telOrNumer={email}
-          />
-        }
-        {
-          skype &&
-          <ContactDetailsItem
-            communicationMethod='Skype'
-            telOrNumer={skype}
-          />
-        }
-      </SafeAreaView>
-    );
-  } else {
-    return (
-      <SafeAreaView style={[stylesMain.containerRowCenter, stylesMain.containerWhite]}>
-        <Text style={stylesMain.itemDescrBigDarkBlue}>Still no contacts</Text>
-      </SafeAreaView>
-    )
-  }
+  return (
+    <SafeAreaView style={stylesMain.containerWhite}>
+      {ContactDetailsTabFunction(contactDetails)}
+    </SafeAreaView>
+  );
 };
-
-export default ContactDetailsTab;
+export default React.memo(ContactDetailsTab);

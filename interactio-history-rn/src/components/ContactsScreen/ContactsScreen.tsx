@@ -1,46 +1,24 @@
-import React from 'react';
-import { SafeAreaView, Text, ActivityIndicator, View } from 'react-native';
-import { FlatList } from 'react-native-gesture-handler';
-import ContactScreenItem from './ContactScreenItem/ContactScreenItem'
-import useContactsListData from '../../hooks/useContactsListData'
-import ErrorBlockAPI from '../common/ErrorBlockAPI/ErrorBlockAPI';
+import React, { useEffect } from 'react';
+import { SafeAreaView } from 'react-native';
+import { useDispatch, useSelector } from 'react-redux';
+import { getContactsListResponse } from '../../store/selectors'
+import { getContactsList } from '../../store/contactsListSlice';
 import stylesMain from '../../styles.global'
-import LoadBlock from '../common/LoadBlock/LoadBlock';
+import ContactsScreenFunction from './Container';
 
 const ContactsScreen = () => {
-  const [{ ContactsListData, isLoaded, error }] = useContactsListData()
+  const contactsList = useSelector(getContactsListResponse);
+  const dispatch = useDispatch()
+  
+  useEffect(() => {
+    dispatch(getContactsList());
+  }, [dispatch])
 
-  if (error) {
-    return (
-      <ErrorBlockAPI
-        styleContainer={[stylesMain.containerVerticalCenter, stylesMain.containerDarkBlue]}
-        styleBlockError={stylesMain.itemContainerWhite}
-        styleTextError={stylesMain.itemTitleBigDarkBlue}
-        textError={`Oops! Something went wrong...Сheck the quality of internet connection and restart the application.If this didn't solve the problem, then let us know.`}
-      />
-    );
-  } else if (!isLoaded) {
-    return (
-      <LoadBlock 
-        styleContainer={[stylesMain.containerVerticalCenter, stylesMain.containerDarkBlue]}
-        colorActivityIndicator={'#fff'}
-      />
-    );
-  } else {
-    return (
-      <SafeAreaView style={stylesMain.containerDarkBlue}>
-        <FlatList
-          data={ContactsListData}
-          keyExtractor={(item => item.id)}
-          renderItem={({ item }) =>
-            <ContactScreenItem
-              item={item}
-            />
-          }
-        />
-      </SafeAreaView>
-    );
-  }
-};
+  return (
+    <SafeAreaView style={stylesMain.containerDarkBlue}>
+      {ContactsScreenFunction(contactsList)}
+    </SafeAreaView>
+  );
+}
 
-export default ContactsScreen;
+export default React.memo(ContactsScreen);

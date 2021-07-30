@@ -1,46 +1,46 @@
-import React, { useContext } from 'react';
-import { TouchableOpacity } from 'react-native';
-import { dataContactContext } from '../../../context/dataContactContext'
-import useContactData from '../../../hooks/useContactData';
+import React, { useCallback } from 'react';
 import navigation from '../../../navigation/navigation'
-import ContactNameBlock from '../../common/ContactNameBlock/ContactNameBlock';
-import stylesMain from '../../../styles.global'
-import { setCurrentId } from '../../../store/slice';
 import { useDispatch } from 'react-redux';
+import { FlatList } from 'react-native-gesture-handler';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { TouchableOpacity } from 'react-native';
+import ContactNameBlock from '../../common/ContactNameBlock/ContactNameBlock';
+import { TContactsListState } from '../../../store/type';
+import { setCurrentId } from '../../../store/slice';
+import stylesMain from '../../../styles.global'
 
-interface IContactScreenItemProps {
-  item: {
-    id: string,
-    firstName: string,
-    jobTitle: string,
-    lastName: string,
-    account: {
-      name: string
-      title: string
-    }
-  }
-}
-
-const ContactScreenItem = ({ item }: IContactScreenItemProps) => {
-  const { toggleDataContact } = useContext(dataContactContext)
-  const [{ ContactData }] = useContactData(item.id)
+const ContactScreenItem = (props: TContactsListState) => {
   const dispatch = useDispatch()
 
-  return (
-    <TouchableOpacity
-      onPress={() => {
-        toggleDataContact(ContactData)
-        dispatch(setCurrentId(item.id))
-        navigation.navigate('ContactInformationScreen')
-      }}>
+  const { response } = props
+
+  const renederItem = useCallback(item => {
+    return (
+      <TouchableOpacity
+        onPress={() => {
+          dispatch(setCurrentId(item.item.id))
+          navigation.navigate('ContactInformationScreen')
+        }}>
         <ContactNameBlock
-          item={item}
+          item={item.item}
           styleContainer={stylesMain.itemContainerWhite}
           styleRow={stylesMain.containerRow}
           styleTitle={stylesMain.itemTitleBigDarkBlue}
           styleDescr={stylesMain.itemDescrSmallDarkBlue}
         />
-    </TouchableOpacity >
+      </TouchableOpacity >
+    )
+  }, [])
+
+  return (
+    <SafeAreaView>
+      {response && <FlatList
+        data={response}
+        keyExtractor={(item => item.id)}
+        renderItem={renederItem}
+      />
+      }
+    </SafeAreaView>
   );
 };
 
