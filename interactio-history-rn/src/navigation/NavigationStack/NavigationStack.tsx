@@ -3,7 +3,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {NavigationContainer} from '@react-navigation/native';
 import ContactsScreen from '../../components/ContactsScreen/ContactsScreen';
 import ContactInformationScreen from '../ContactInformationScreen/ContactInformationScreen';
-import CreateFormScreen from '../../components/CreateFormScreen/CreateFormScreen';
+import MainTabs from '../../components/CreateFormScreen/InteractionsTabs/MainTabs';
 import ContactInformationTitleNavigation from './ContactDetailsTitleNav/ContactDetailsTitleNav';
 import Navigation from '../navigation';
 import stylesMain from '../../styles.global';
@@ -29,8 +29,8 @@ const NavigationStack = () => {
         />
         <Stack.Screen
           name="CreateFormScreen"
-          component={CreateFormScreen}
-          options={{title: 'Create Form'}}
+          component={MainTabs}
+          options={{title: 'New Intetaction'}}
         />
       </Stack.Navigator>
     </NavigationContainer>

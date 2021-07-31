@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import InteractionInput from '../InteractionInput/InteractionInput';
+import InteractionInput from '../../InteractionInput/InteractionInput';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import {
   StyleSheet,
@@ -16,18 +16,23 @@ import Feather from 'react-native-vector-icons/Feather';
 import {Formik} from 'formik';
 import * as yup from 'yup';
 
-const testData = ['red', 'blue', 'orange', 'blue'];
+const testData = ['red', 'blue'];
 
 const updateLayout = () => {
   LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
 };
 
 const schema = yup.object({
+  email: yup
+    .string()
+    .email('Please, enter a valid email')
+    .required('Email is required field')
+    .min(6),
   description: yup.string().required('Description is required field'),
   date: yup.string().required('Please, choose a date'),
 });
 
-const CreateInteractionCall = ({navigation}: any) => {
+const CreateInteractionEmail = ({navigation}: any) => {
   const [selectedAccount, setSelectedAccount] = useState('Choose One');
   const [selectedCall, setSelectedCall] = useState('Connected');
   const [selectedTo, setSelectedTo] = useState('Rushan Ramazanov');
@@ -57,6 +62,7 @@ const CreateInteractionCall = ({navigation}: any) => {
     <ScrollView style={styles.app}>
       <Formik
         initialValues={{
+          email: 'petrov@mail.ru',
           description: '',
           account: '',
           reason: selectedReason,
@@ -91,6 +97,19 @@ const CreateInteractionCall = ({navigation}: any) => {
                 setValue={setSelectedAccount}
                 setField={formikProps.setFieldValue.bind(null, 'account')}
               />
+            </View>
+            <View style={styles.dropdown}>
+              <Text>Email</Text>
+              <TextInput
+                placeholder={'Enter the email...'}
+                style={styles.emailInput}
+                onChangeText={formikProps.handleChange('email')}
+                value={formikProps.values.email}
+                onBlur={formikProps.handleBlur('email')}
+              />
+              <Text style={styles.errorText}>
+                {formikProps.touched.email && formikProps.errors.email}
+              </Text>
             </View>
             <View style={styles.dropdown}>
               <Text>Date</Text>
@@ -203,13 +222,11 @@ const CreateInteractionCall = ({navigation}: any) => {
 
 const styles = StyleSheet.create({
   app: {
-    backgroundColor: '#fcfcfc',
+    backgroundColor: 'white',
     flex: 1,
   },
   text: {fontSize: 17},
-  dropdown: {
-    padding: 20,
-  },
+  dropdown: {padding: 20, position: 'relative'},
   dropdownBtn: {
     marginBottom: 10,
     fontSize: 17,
@@ -243,12 +260,10 @@ const styles = StyleSheet.create({
     borderRadius: 5,
   },
   sbtButton: {
-    shadowOpacity: 0.5,
-    shadowRadius: 15,
     width: '40%',
     alignSelf: 'center',
     textAlign: 'center',
-    backgroundColor: 'blue',
+    backgroundColor: '#183147',
     marginBottom: 20,
     fontSize: 17,
     borderWidth: 1,
@@ -268,4 +283,4 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
 });
-export default CreateInteractionCall;
+export default CreateInteractionEmail;
