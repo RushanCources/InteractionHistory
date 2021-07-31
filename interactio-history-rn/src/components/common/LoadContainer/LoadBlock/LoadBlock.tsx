@@ -1,6 +1,6 @@
 import React from 'react';
 import { ActivityIndicator, SafeAreaView } from 'react-native';
-import stylesMain from '../../../styles.global'
+import stylesMain from '../../../../styles.global'
 
 interface ILoadBlockProps {
   styleContainer: object | Array<{}>

@@ -6,7 +6,14 @@ import ContactInformationScreen from '../ContactInformationScreen/ContactInforma
 import MainTabs from '../../components/CreateFormScreen/InteractionsTabs/MainTabs';
 import ContactInformationTitleNavigation from './ContactDetailsTitleNav/ContactDetailsTitleNav';
 import Navigation from '../navigation';
+<<<<<<< HEAD
 import stylesMain from '../../styles.global';
+||||||| 9b4ec57
+import stylesMain from '../../styles.global'
+=======
+import stylesMain from '../../styles.global'
+import IconBack from './IconBack';
+>>>>>>> 61c4913b03c4059116aaecd587af0ea14ac018b6
 
 const Stack = createStackNavigator();
 
@@ -22,10 +29,23 @@ const NavigationStack = () => {
         <Stack.Screen
           name="ContactInformationScreen"
           component={ContactInformationScreen}
+<<<<<<< HEAD
           options={{
             headerStyle: stylesMain.stackNavHeaderBigDarkBlue,
             headerTitle: props => <ContactInformationTitleNavigation />,
           }}
+||||||| 9b4ec57
+					options={{
+						headerStyle: stylesMain.stackNavHeaderBigDarkBlue,
+						headerTitle: props => <ContactInformationTitleNavigation />,
+					}}
+=======
+					options={{
+						headerStyle: stylesMain.stackNavHeaderBigDarkBlue,
+						headerTitle: props => <ContactInformationTitleNavigation />,
+            headerBackImage: () => <IconBack />,
+					}}
+>>>>>>> 61c4913b03c4059116aaecd587af0ea14ac018b6
         />
         <Stack.Screen
           name="CreateFormScreen"

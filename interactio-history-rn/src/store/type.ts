@@ -58,7 +58,7 @@ export type TContactDetailsState = {
   response: TContactData;
   error: null | NetworkError;
   loading: boolean;
-  currentContact: string;
+  methodCommunication?: string;
 };
 
 export type TContactDetailsType = {
