@@ -16,15 +16,15 @@ const initialState: TContactDetailsState = {
   response: {},
   error: null,
   loading: true,
-  currentContact: '',
+  methodCommunication: '',
 };
 
 const contactDetailsSlice = createSlice({
   name: 'contactDetails',
   initialState,
   reducers: {
-    setCurrentId(state, action) {
-      state.currentContact = action.payload.toString();
+    setMethodCommunication(state, action) {
+      state.methodCommunication = action.payload.toString();
     },
   },
 
@@ -47,4 +47,4 @@ const contactDetailsSlice = createSlice({
 });
 
 export default contactDetailsSlice.reducer;
-export const { setCurrentId } = contactDetailsSlice.actions;
+export const { setMethodCommunication } = contactDetailsSlice.actions;

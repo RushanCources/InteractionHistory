@@ -4,7 +4,8 @@ import { getContactsListResponse } from '../../store/selectors'
 import { getContactsList } from '../../store/contactsListSlice';
 import stylesMain, { WHITE } from '../../styles.global'
 import LoadContainer from '../common/LoadContainer/LoadContainer';
-import ContactScreenItem from './ContactScreenItem/ContactScreenItem';
+import ContactList from './ContactList/ContactList';
+import { ImageBackground } from 'react-native';
 
 const ContactsScreen = () => {
   const contactsList = useSelector(getContactsListResponse);
@@ -15,15 +16,18 @@ const ContactsScreen = () => {
   }, [dispatch])
 
   return (
-    <LoadContainer
-      loading={contactsList.loading}
-      error={contactsList.error}
-      styleContainer={stylesMain.containerDarkBlue}
-      styleLoadContainer={[stylesMain.containerVerticalCenter, stylesMain.containerDarkBlue]}
-      colorload={WHITE}
-    >
-      <ContactScreenItem {...contactsList} />
-    </LoadContainer>
+    <ImageBackground
+      source={require('../../img/Homepage.jpg')}
+      style={stylesMain.imageBackground}
+      >
+      <LoadContainer
+        loading={contactsList.loading}
+        error={contactsList.error}
+        styleLoadContainer={[stylesMain.containerVerticalCenter, stylesMain.containerDarkBlue]}
+      >
+        <ContactList {...contactsList} />
+      </LoadContainer>
+    </ImageBackground>
   );
 }
 
