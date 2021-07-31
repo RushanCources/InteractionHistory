@@ -3,17 +3,18 @@ import { Text } from 'react-native';
 import LoadBlock from './LoadBlock/LoadBlock';
 import { NetworkError } from '../../../store/type';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import stylesMain, { WHITE } from '../../../styles.global';
 
 interface ILoadContainerProps {
   loading: boolean,
   error: null | NetworkError,
   children: React.ReactNode,
-  styleContainer: [] | {},
-  styleLoadContainer: [] | {},
-  colorload: string,
+  styleContainer?: [] | {},
+  styleLoadContainer?: [] | {},
+  colorload?: string,
 }
 
-const LoadContainer = ({ loading, error, children, styleLoadContainer, colorload, styleContainer }: ILoadContainerProps) => {
+const LoadContainer = ({ loading, error, children, styleLoadContainer = stylesMain.container, colorload = WHITE, styleContainer }: ILoadContainerProps) => {
 
   if (loading) {
     return (

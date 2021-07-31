@@ -1,5 +1,5 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import reducer from './slice';
+import reducer from './contactInteractionsSlice';
 import contactsListReducer from './contactsListSlice'
 import contactDetailsReducer from './contactDetailsSlice'
 

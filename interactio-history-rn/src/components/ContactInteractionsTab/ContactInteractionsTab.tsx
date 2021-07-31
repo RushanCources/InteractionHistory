@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getInteractionResponse } from '../../store/selectors';
-import { getContactInteractions } from '../../store/slice';
+import { getContactInteractions } from '../../store/contactInteractionsSlice';
 import stylesMain, { WHITE } from '../../styles.global';
 import LoadContainer from '../common/LoadContainer/LoadContainer';
 import ContactInteractionsItem from './Component/ContactInteractionsItem';
