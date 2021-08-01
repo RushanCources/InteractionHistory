@@ -29,6 +29,7 @@ const stylesMain = StyleSheet.create({
   containerRow: {
     display: "flex",
     flexDirection: "row",
+    alignItems: 'center',
   },
   containerRowCenter: {
     flexDirection: "row",
@@ -76,7 +77,7 @@ const stylesMain = StyleSheet.create({
     paddingRight: 30,
   },
   stackNavHeaderBigDarkBlue: {
-    height: 200,
+    height: 150,
     backgroundColor: DARK_BLUE,
   },
   navTitle: {
@@ -97,6 +98,11 @@ const stylesMain = StyleSheet.create({
   itemImageClient: {
     width: 60,
     height: 60,
+    borderRadius: 50,
+    borderWidth: 3,
+    borderColor: DARK_BLUE,
+  },
+  itemImageComMethod: {
     marginRight: 15,
     borderRadius: 50,
     borderWidth: 3,
@@ -110,6 +116,9 @@ const stylesMain = StyleSheet.create({
   },
   mb20: {
     marginBottom: 20,
+  },
+  mr15: {
+    marginRight: 15,
   },
   absoluteRitghtBlock: {
     position: "absolute",
@@ -126,7 +135,6 @@ const stylesMain = StyleSheet.create({
     color: WHITE,
   },
   btn: {
-    marginTop: 10,
     paddingVertical: 10,
     paddingHorizontal: 35,
     borderRadius: 10,
@@ -134,6 +142,10 @@ const stylesMain = StyleSheet.create({
     fontWeight: '700',
     color: DARK_BLUE,
     backgroundColor: WHITE,
+  },
+  iconComMethod: {
+    width: 50,
+    height: 50,
   },
 });
 

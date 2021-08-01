@@ -24,7 +24,7 @@ const ContactList = (props: TContactsListState) => {
         <View style={[stylesMain.itemContainerWhite, stylesMain.containerRow]}>
           <Image
             source={require('../../../img/img-client.png')}
-            style={stylesMain.itemImageClient}
+            style={[stylesMain.itemImageClient, stylesMain.mr15,]}
           />
           <ContactNameBlock
             item={item.item}
@@ -39,14 +39,14 @@ const ContactList = (props: TContactsListState) => {
 
   return (
     <SafeAreaView style={stylesMain.containerPadding}>
-      <View style={[stylesMain.containerRow, stylesMain.containerVerticalCenter]}>
-        <Text style={[stylesMain.titleBigWhite, stylesMain.mb20]}>Contacts</Text>
+      <View style={[stylesMain.containerRow, stylesMain.containerVerticalCenter, stylesMain.mb20]}>
+        <Text style={[stylesMain.titleBigWhite]}>Contacts</Text>
         <TouchableOpacity
           onPress={() => {
             navigation.navigate('RecentsScreen')
           }}
         >
-          <Text style={stylesMain.btn}>Recents</Text>
+          <Text style={[stylesMain.btn, stylesMain.mt10]}>Recents</Text>
         </TouchableOpacity>
       </View>
       {response && <FlatList

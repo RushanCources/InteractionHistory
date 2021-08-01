@@ -5,6 +5,9 @@ import { useDispatch } from 'react-redux';
 import navigation from '../../../../navigation/navigation';
 import { setMethodCommunication } from '../../../../store/slice/contactDetailsSlice';
 import stylesMain from '../../../../styles.global';
+import IconMail from '../../../icons/IconMail';
+import IconSkype from '../../../icons/IconSkype';
+import IconTel from '../../../icons/IconTel';
 
 interface IContactDetailsItemsProps {
 	communicationMethod: string
@@ -14,15 +17,22 @@ interface IContactDetailsItemsProps {
 const ContactDetailsItem = ({ communicationMethod, telOrNumer }: IContactDetailsItemsProps) => {
 	const dispatch = useDispatch()
 
-	const call = (connect: string, connectMethod: string): void => {
-		console.log('click');
+	let connectURL: string;
+	let IconCommunicationMethod: React.ReactNode;
+
+	if (communicationMethod === 'Skype') {
+		connectURL = `skype:${telOrNumer}?chat`;
+		IconCommunicationMethod = <IconSkype style={[stylesMain.mr15, stylesMain.iconComMethod]} />;
+	} else if (communicationMethod === 'Mail') {
+		connectURL = `mailto:${telOrNumer}`;
+		IconCommunicationMethod = <IconMail style={[stylesMain.mr15, stylesMain.iconComMethod]} />;
+	} else {
+		connectURL = `tel:${telOrNumer}`;
+		IconCommunicationMethod = <IconTel style={[stylesMain.mr15, stylesMain.iconComMethod]} />;
+	}
+
+	const call = (connectURL: string): void => {
 		dispatch(setMethodCommunication(communicationMethod))
-
-		const connectURL =
-			(connectMethod === 'Skype') ? `skype:${connect}?chat`
-				: (connectMethod === 'Mail') ? `mailto:${connect}`
-					: `tel:${connect}`
-
 		Linking.openURL(connectURL)
 			.catch((error) => {
 				console.log(error)
@@ -32,14 +42,17 @@ const ContactDetailsItem = ({ communicationMethod, telOrNumer }: IContactDetails
 	return (
 		<TouchableOpacity
 			onPress={() => {
-				call(telOrNumer, communicationMethod)
+				call(connectURL)
 				navigation.navigate('CreateFormScreen')
-				
+
 			}}
 		>
-			<View style={stylesMain.itemContainerBorderLeftDarkBlue}>
-				<Text style={stylesMain.itemTitleSmallBlue}>{communicationMethod}</Text>
-				<Text style={stylesMain.itemDescrBigDarkBlue}>{telOrNumer}</Text>
+			<View style={[stylesMain.itemContainerBorderLeftDarkBlue, stylesMain.containerRow]}>
+				{IconCommunicationMethod}
+				<View>
+					<Text style={stylesMain.itemTitleSmallBlue}>{communicationMethod}</Text>
+					<Text style={stylesMain.itemDescrBigDarkBlue}>{telOrNumer}</Text>
+				</View>
 			</View>
 		</TouchableOpacity>
 	);
