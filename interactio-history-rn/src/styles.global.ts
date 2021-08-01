@@ -41,7 +41,8 @@ const stylesMain = StyleSheet.create({
   itemContainerWhite: {
     marginBottom: 10,
     paddingVertical: 15,
-    paddingHorizontal: 20,
+    paddingLeft: 20,
+    paddingRight: 20,
     borderRadius: 10,
     backgroundColor: WHITE,
   },
@@ -61,6 +62,10 @@ const stylesMain = StyleSheet.create({
   },
   itemDescrBigDarkBlue: {
     fontSize: 24,
+    color: DARK_BLUE,
+  },
+  itemDescrMediumDarkBlue: {
+    fontSize: 20,
     color: DARK_BLUE,
   },
   itemDescrSmallDarkBlue: {
@@ -85,9 +90,9 @@ const stylesMain = StyleSheet.create({
     color: WHITE,
   },
   imageBackground: {
-    flex:1, 
-    width: '100%', 
-    height: '100%',
+    flex: 1,
+    width: "100%",
+    height: "100%",
   },
   itemImageClient: {
     width: 60,
@@ -96,6 +101,39 @@ const stylesMain = StyleSheet.create({
     borderRadius: 50,
     borderWidth: 3,
     borderColor: DARK_BLUE,
+  },
+  pr150: {
+    paddingRight: 150,
+  },
+  mt10: {
+    marginTop: 10,
+  },
+  mb20: {
+    marginBottom: 20,
+  },
+  absoluteRitghtBlock: {
+    position: "absolute",
+    top: "50%",
+    right: 20,
+  },
+  itemTime: {
+    fontSize: 18,
+    color: BLUE,
+  },
+  titleBigWhite: {
+    fontSize: 40,
+    fontWeight: "700",
+    color: WHITE,
+  },
+  btn: {
+    marginTop: 10,
+    paddingVertical: 10,
+    paddingHorizontal: 35,
+    borderRadius: 10,
+    fontSize: 18,
+    fontWeight: '700',
+    color: DARK_BLUE,
+    backgroundColor: WHITE,
   },
 });
 

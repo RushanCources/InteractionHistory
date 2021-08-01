@@ -3,13 +3,13 @@ import navigation from '../../../navigation/navigation'
 import { useDispatch } from 'react-redux';
 import { FlatList } from 'react-native-gesture-handler';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { Image, TouchableOpacity, View } from 'react-native';
+import { Image, TouchableOpacity, View, Text } from 'react-native';
 import ContactNameBlock from '../../common/ContactNameBlock/ContactNameBlock';
 import { TContactsListState } from '../../../store/type';
-import { setCurrentId } from '../../../store/contactInteractionsSlice';
-import stylesMain, { DARK_BLUE } from '../../../styles.global'
+import { setCurrentId } from '../../../store/slice/contactInteractionsSlice';
+import stylesMain from '../../../styles.global'
 
-const ContactScreenItem = (props: TContactsListState) => {
+const ContactList = (props: TContactsListState) => {
   const dispatch = useDispatch()
 
   const { response } = props
@@ -38,7 +38,17 @@ const ContactScreenItem = (props: TContactsListState) => {
   }, [])
 
   return (
-    <SafeAreaView style={stylesMain.containerPadding} >
+    <SafeAreaView style={stylesMain.containerPadding}>
+      <View style={[stylesMain.containerRow, stylesMain.containerVerticalCenter]}>
+        <Text style={[stylesMain.titleBigWhite, stylesMain.mb20]}>Contacts</Text>
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate('RecentsScreen')
+          }}
+        >
+          <Text style={stylesMain.btn}>Recents</Text>
+        </TouchableOpacity>
+      </View>
       {response && <FlatList
         data={response}
         keyExtractor={(item => item.id)}
@@ -49,4 +59,4 @@ const ContactScreenItem = (props: TContactsListState) => {
   );
 };
 
-export default ContactScreenItem;
+export default ContactList;

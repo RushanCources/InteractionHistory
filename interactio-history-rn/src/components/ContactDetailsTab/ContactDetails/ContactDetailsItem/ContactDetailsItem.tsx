@@ -3,7 +3,7 @@ import React from 'react';
 import { Linking, Text, TouchableOpacity, View } from 'react-native';
 import { useDispatch } from 'react-redux';
 import navigation from '../../../../navigation/navigation';
-import { setMethodCommunication } from '../../../../store/contactDetailsSlice';
+import { setMethodCommunication } from '../../../../store/slice/contactDetailsSlice';
 import stylesMain from '../../../../styles.global';
 
 interface IContactDetailsItemsProps {

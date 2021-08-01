@@ -7,7 +7,8 @@ import CreateFormScreen from '../../components/CreateFormScreen/CreateFormScreen
 import ContactInformationTitleNavigation from './ContactDetailsTitleNav/ContactDetailsTitleNav';
 import Navigation from '../navigation';
 import stylesMain from '../../styles.global'
-import IconBack from './IconBack';
+import IconBack from '../../components/icons/IconBack';
+import RecentsScreen from '../../components/RecentsScreen/RecentsScreen';
 
 const Stack = createStackNavigator();
 
@@ -18,16 +19,21 @@ const NavigationStack = () => {
         <Stack.Screen
           name="ContactsScreen"
           component={ContactsScreen}
-          options={{ title: 'Contacts' }}
+          options={{ headerShown: false}}
         />
         <Stack.Screen
           name="ContactInformationScreen"
           component={ContactInformationScreen}
-					options={{
-						headerStyle: stylesMain.stackNavHeaderBigDarkBlue,
-						headerTitle: props => <ContactInformationTitleNavigation />,
+          options={{
+            headerStyle: stylesMain.stackNavHeaderBigDarkBlue,
+            headerTitle: () => <ContactInformationTitleNavigation />,
             headerBackImage: () => <IconBack />,
-					}}
+          }}
+        />
+        <Stack.Screen
+          name="RecentsScreen"
+          component={RecentsScreen}
+          options={{ title: 'Recents' }}
         />
         <Stack.Screen
           name="CreateFormScreen"

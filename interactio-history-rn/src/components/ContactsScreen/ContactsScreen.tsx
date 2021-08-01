@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getContactsListResponse } from '../../store/selectors'
-import { getContactsList } from '../../store/contactsListSlice';
+import { getContactsList } from '../../store/slice/contactsListSlice';
 import stylesMain, { WHITE } from '../../styles.global'
 import LoadContainer from '../common/LoadContainer/LoadContainer';
 import ContactList from './ContactList/ContactList';
@@ -23,7 +23,7 @@ const ContactsScreen = () => {
       <LoadContainer
         loading={contactsList.loading}
         error={contactsList.error}
-        styleLoadContainer={[stylesMain.containerVerticalCenter, stylesMain.containerDarkBlue]}
+        styleLoadContainer={[stylesMain.containerVerticalCenter, stylesMain.container]}
       >
         <ContactList {...contactsList} />
       </LoadContainer>

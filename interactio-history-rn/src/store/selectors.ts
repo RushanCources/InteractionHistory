@@ -5,11 +5,14 @@ import {
   TContactDetailsState, 
   TContactDetailsType, 
   TContactsListState, 
-  IContactsListType 
+  IContactsListType, 
+  TContactsRecentsType,
+  TContactsRecentsState
 } from './type';
 
 const getInteractionState = (state: TStateType): TState => state.interactions;
 const getContactsListState = (state: IContactsListType): TContactsListState => state.contactsList;
+const getContactsRecents = (state: TContactsRecentsType): TContactsRecentsState => state.contactsRecents;
 const getContactDetails = (state: TContactDetailsType): TContactDetailsState => state.contactDetails;
 
 export const getInteractionResponse = createSelector(
@@ -19,6 +22,11 @@ export const getInteractionResponse = createSelector(
 
 export const getContactsListResponse = createSelector(
   getContactsListState,
+  ({ response, loading, error }) => ({response, loading, error })
+);
+
+export const getContactsRecentsResponse = createSelector(
+  getContactsRecents,
   ({ response, loading, error }) => ({response, loading, error })
 );
 

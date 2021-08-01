@@ -1,12 +1,14 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import reducer from './contactInteractionsSlice';
-import contactsListReducer from './contactsListSlice'
-import contactDetailsReducer from './contactDetailsSlice'
+import contactInteractionsReducer from './slice/contactInteractionsSlice';
+import contactsListReducer from './slice/contactsListSlice'
+import contactDetailsReducer from './slice/contactDetailsSlice'
+import contactsRecentsReducer from './slice/contactsRecentsSlice'
 
 export const rootReducer = combineReducers({
-  interactions: reducer,
+  interactions: contactInteractionsReducer,
   contactsList: contactsListReducer,
-  contactDetails: contactDetailsReducer
+  contactDetails: contactDetailsReducer,
+  contactsRecents: contactsRecentsReducer,
 });
 
 export const store = configureStore({
