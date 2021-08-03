@@ -10,23 +10,14 @@ class NavigationC {
 
   initialRout = 'ContactsScreen';
 
-  navigate = (routeName: string, params?: NavigationParams) => {
-    setTimeout(
-      () => this.navigationRef.current?.navigate(routeName, params),
-      0,
-    );
-  };
+  navigate = (routeName: string, params?: NavigationParams) =>
+    this.navigationRef.current?.navigate(routeName, params);
 
-  replace = (routeName: string, params?: NavigationParams) => {
-    setTimeout(
-      () =>
-        this.navigationRef.current?.reset({
-          index: 0,
-          routes: [{name: routeName, params}],
-        }),
-      0,
-    );
-  };
+  replace = (routeName: string, params?: NavigationParams) =>
+    this.navigationRef.current?.reset({
+      index: 0,
+      routes: [{name: routeName, params}],
+    });
 
   pop = () => {
     this.navigationRef.current?.goBack();
