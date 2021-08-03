@@ -44,7 +44,6 @@ const ContactDetailsItem = ({ communicationMethod, telOrNumer }: IContactDetails
       onPress={() => {
         call(connectURL)
         navigation.navigate('CreateFormScreen')
-
       }}
     >
       <View style={[stylesMain.itemContainerBorderDown, stylesMain.containerRow]}>
