@@ -11,16 +11,11 @@ import {
   ScrollView,
   LayoutAnimation,
 } from 'react-native';
-import {useSelector} from 'react-redux';
 import Icon from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 import Feather from 'react-native-vector-icons/Feather';
 import {Formik} from 'formik';
 import * as yup from 'yup';
 import {TContactDetailsState} from '../../../store/type';
-import {
-  getContactDetailsResponse,
-  getInteractionResponse,
-} from '../../../store/selectors';
 
 const reasonData = ['Private', 'Proposal'];
 const outcomeData = ['Connected', 'Not connected'];
@@ -39,9 +34,7 @@ const schema = yup.object({
   date: yup.string().required('Please, choose a date'),
 });
 
-const CreateInteractionCall = (props: TContactDetailsState) => {
-  const {methodCommunication} = useSelector(getContactDetailsResponse);
-
+const CreateInteractionMeeting = (props: TContactDetailsState) => {
   const {response} = props;
 
   const [selectedCall, setSelectedCall] = useState('Connected');
@@ -68,14 +61,11 @@ const CreateInteractionCall = (props: TContactDetailsState) => {
     setDateText(formattedDate);
   };
 
-  const number =
-    methodCommunication === 'Work number' ? response.work : response.mobile;
-
   return (
     <ScrollView style={styles.app}>
       <Formik
         initialValues={{
-          number: number,
+          skype: response.skype,
           description: '',
           account: `${response.account?.name}`,
           reason: selectedReason,
@@ -93,16 +83,6 @@ const CreateInteractionCall = (props: TContactDetailsState) => {
         {formikProps => (
           <>
             <View style={styles.dropdown}>
-              <Text>Number</Text>
-              <TextInput
-                editable={false}
-                style={styles.emailInput}
-                onChangeText={formikProps.handleChange('number')}
-                value={formikProps.values.number}
-                onBlur={formikProps.handleBlur('number')}
-              />
-            </View>
-            <View style={styles.dropdown}>
               <Text>Account</Text>
               <TextInput
                 editable={false}
@@ -110,6 +90,15 @@ const CreateInteractionCall = (props: TContactDetailsState) => {
                 onChangeText={formikProps.handleChange('account')}
                 value={formikProps.values.account}
                 onBlur={formikProps.handleBlur('account')}
+              />
+            </View>
+            <View style={styles.dropdown}>
+              <Text>Skype</Text>
+              <TextInput
+                style={styles.emailInput}
+                onChangeText={formikProps.handleChange('skype')}
+                value={formikProps.values.skype}
+                onBlur={formikProps.handleBlur('skype')}
               />
             </View>
             <View style={styles.dropdown}>
@@ -278,4 +267,4 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
 });
-export default CreateInteractionCall;
+export default CreateInteractionMeeting;

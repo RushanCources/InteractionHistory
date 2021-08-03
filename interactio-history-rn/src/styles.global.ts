@@ -1,8 +1,8 @@
-import { StyleSheet } from "react-native";
+import {StyleSheet} from 'react-native';
 
-export const WHITE = "#fff";
-export const BLUE = "#337ab7";
-export const DARK_BLUE = "#183147";
+export const WHITE = '#fff';
+export const BLUE = '#337ab7';
+export const DARK_BLUE = '#183147';
 
 const stylesMain = StyleSheet.create({
   container: {
@@ -27,15 +27,15 @@ const stylesMain = StyleSheet.create({
     backgroundColor: DARK_BLUE,
   },
   containerRow: {
-    display: "flex",
-    flexDirection: "row",
+    display: 'flex',
+    flexDirection: 'row',
   },
   containerRowCenter: {
-    flexDirection: "row",
-    justifyContent: "center",
+    flexDirection: 'row',
+    justifyContent: 'center',
   },
   containerVerticalCenter: {
-    justifyContent: "space-around",
+    justifyContent: 'space-around',
     padding: 10,
   },
   itemContainerWhite: {
@@ -76,17 +76,17 @@ const stylesMain = StyleSheet.create({
   },
   navTitle: {
     fontSize: 40,
-    textAlign: "center",
+    textAlign: 'center',
     color: WHITE,
   },
   NavDescr: {
     fontSize: 16,
-    textAlign: "center",
+    textAlign: 'center',
     color: WHITE,
   },
   imageBackground: {
-    flex:1, 
-    width: '100%', 
+    flex: 1,
+    width: '100%',
     height: '100%',
   },
   itemImageClient: {

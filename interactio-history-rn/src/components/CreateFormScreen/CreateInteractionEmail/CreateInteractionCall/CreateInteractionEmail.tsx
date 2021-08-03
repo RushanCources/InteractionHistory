@@ -15,8 +15,10 @@ import Icon from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 import Feather from 'react-native-vector-icons/Feather';
 import {Formik} from 'formik';
 import * as yup from 'yup';
+import {TContactDetailsState} from '../../../../store/type';
 
-const testData = ['red', 'blue'];
+const reasonData = ['Private', 'Proposal'];
+const outcomeData = ['Connected', 'Not connected'];
 
 const updateLayout = () => {
   LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
@@ -32,20 +34,21 @@ const schema = yup.object({
   date: yup.string().required('Please, choose a date'),
 });
 
-const CreateInteractionEmail = ({navigation}: any) => {
-  const [selectedAccount, setSelectedAccount] = useState('Choose One');
+const CreateInteractionEmail = (props: TContactDetailsState) => {
+  const {response} = props;
+
   const [selectedCall, setSelectedCall] = useState('Connected');
-  const [selectedTo, setSelectedTo] = useState('Rushan Ramazanov');
   const [selectedReason, setSelectedReason] = useState('Proposal');
   const [date, setDate] = useState(new Date());
   const [dateText, setDateText] = useState('');
 
-  const [accIsActive, setAccIsActive] = useState(false);
   const [callIsActive, setCallIsActive] = useState(false);
-  const [toIsActive, setToIsActive] = useState(false);
   const [reasonIsActive, setReasonIsActive] = useState(false);
   const [showDate, setShowDate] = useState(false);
   const [submit, setSubmit] = useState(false);
+  const formattedDate = `${date.getDate()}/${
+    date.getMonth() + 1
+  }/${date.getFullYear()}`;
 
   const onChangeDate = (event: Event, selectedDate: Date | undefined) => {
     const currentDate = selectedDate || date;
@@ -62,18 +65,18 @@ const CreateInteractionEmail = ({navigation}: any) => {
     <ScrollView style={styles.app}>
       <Formik
         initialValues={{
-          email: 'petrov@mail.ru',
+          email: `${response.email}`,
           description: '',
-          account: '',
+          account: `${response.account?.name}`,
           reason: selectedReason,
           outcome: selectedCall,
-          date: '',
-          contactTo: selectedTo,
+          date: formattedDate,
+          contactTo: `${response.firstName} ${response.lastName}`,
         }}
         validationSchema={schema}
         onSubmit={values => {
           if (submit) {
-            navigation.navigate('NavigationTab');
+            // navigation.navigate('NavigationTab');
           }
           console.log(values);
         }}>
@@ -81,21 +84,12 @@ const CreateInteractionEmail = ({navigation}: any) => {
           <>
             <View style={styles.dropdown}>
               <Text>Account</Text>
-              <TouchableOpacity
-                style={styles.dropdownBtn}
-                onPress={() => {
-                  setAccIsActive(!accIsActive);
-                  updateLayout();
-                }}>
-                <Text style={styles.text}>{selectedAccount}</Text>
-                <Icon name={'chevron-down'} size={17} />
-              </TouchableOpacity>
-              <InteractionInput
-                data={testData}
-                modalOpen={accIsActive}
-                setModalOpen={setAccIsActive}
-                setValue={setSelectedAccount}
-                setField={formikProps.setFieldValue.bind(null, 'account')}
+              <TextInput
+                editable={false}
+                style={styles.emailInput}
+                onChangeText={formikProps.handleChange('account')}
+                value={formikProps.values.account}
+                onBlur={formikProps.handleBlur('account')}
               />
             </View>
             <View style={styles.dropdown}>
@@ -118,38 +112,32 @@ const CreateInteractionEmail = ({navigation}: any) => {
                 onPress={() => {
                   setShowDate(!showDate);
                   formikProps.setFieldValue('date', dateText);
+                  updateLayout();
                 }}>
-                <Text style={styles.text}>{dateText}</Text>
+                <Text style={styles.text}>{formattedDate}</Text>
                 <Feather name="calendar" size={17} />
               </TouchableOpacity>
               {showDate && (
                 <DateTimePicker
                   value={date}
-                  testID="dateTimePicker"
+                  testID="datePicker"
                   mode={'date'}
                   display="spinner"
                   onChange={onChangeDate}
                 />
               )}
-              <Text style={styles.errorText}>{formikProps.errors.date}</Text>
+              <Text style={styles.errorText}>
+                {formikProps.touched.date && formikProps.errors.date}
+              </Text>
             </View>
             <View style={styles.dropdown}>
               <Text>Contact to</Text>
-              <TouchableOpacity
-                style={styles.dropdownBtn}
-                onPress={() => {
-                  setToIsActive(!toIsActive);
-                  updateLayout();
-                }}>
-                <Text style={styles.text}>{selectedTo}</Text>
-                <Icon name={'chevron-down'} size={17} />
-              </TouchableOpacity>
-              <InteractionInput
-                data={testData}
-                modalOpen={toIsActive}
-                setModalOpen={setToIsActive}
-                setValue={setSelectedTo}
-                setField={formikProps.setFieldValue.bind(null, 'contactTo')}
+              <TextInput
+                editable={false}
+                style={styles.emailInput}
+                onChangeText={formikProps.handleChange('contactTo')}
+                value={formikProps.values.contactTo}
+                onBlur={formikProps.handleBlur('contactTo')}
               />
             </View>
             <View style={styles.dropdown}>
@@ -164,7 +152,7 @@ const CreateInteractionEmail = ({navigation}: any) => {
                 <Icon name={'chevron-down'} size={17} />
               </TouchableOpacity>
               <InteractionInput
-                data={testData}
+                data={outcomeData}
                 modalOpen={callIsActive}
                 setModalOpen={setCallIsActive}
                 setValue={setSelectedCall}
@@ -183,7 +171,7 @@ const CreateInteractionEmail = ({navigation}: any) => {
                 <Icon name={'chevron-down'} size={17} />
               </TouchableOpacity>
               <InteractionInput
-                data={testData}
+                data={reasonData}
                 modalOpen={reasonIsActive}
                 setModalOpen={setReasonIsActive}
                 setValue={setSelectedReason}

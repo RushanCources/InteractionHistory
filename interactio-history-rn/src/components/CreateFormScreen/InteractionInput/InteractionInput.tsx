@@ -19,8 +19,7 @@ const InteractionInput: React.FC<{
                 setValue(option);
                 setModalOpen(false);
                 setField(option);
-              }}
-              style={styles.dropdownItem}>
+              }}>
               <Text style={styles.text}>{option}</Text>
             </TouchableOpacity>
           ))}
@@ -42,7 +41,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     paddingVertical: 10,
   },
-  dropdownItem: {},
 });
 
 export default InteractionInput;
