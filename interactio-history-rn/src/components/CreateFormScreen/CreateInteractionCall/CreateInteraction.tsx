@@ -17,10 +17,7 @@ import Feather from 'react-native-vector-icons/Feather';
 import {Formik} from 'formik';
 import * as yup from 'yup';
 import {TContactDetailsState} from '../../../store/type';
-import {
-  getContactDetailsResponse,
-  getInteractionResponse,
-} from '../../../store/selectors';
+import {getContactDetailsResponse} from '../../../store/selectors';
 import navigation from '../../../navigation/navigation';
 
 const reasonData = ['Private', 'Proposal'];
@@ -51,7 +48,7 @@ const CreateInteractionCall = (props: TContactDetailsState) => {
   const [submit, setSubmit] = useState(false);
   const formattedDate = `${date.getDate()}/${
     date.getMonth() + 1
-  }/${date.getFullYear()}`;
+  }/${date.getFullYear()}, ${date.toLocaleTimeString().slice(0, -6)}`;
 
   const onChangeDate = (event: Event, selectedDate: Date | undefined) => {
     const currentDate = selectedDate || date;

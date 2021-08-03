@@ -44,7 +44,7 @@ const CreateInteractionMeeting = (props: TContactDetailsState) => {
   const [submit, setSubmit] = useState(false);
   const formattedDate = `${date.getDate()}/${
     date.getMonth() + 1
-  }/${date.getFullYear()}`;
+  }/${date.getFullYear()}, ${date.toLocaleTimeString().slice(0, -6)}`;
 
   const onChangeDate = (event: Event, selectedDate: Date | undefined) => {
     const currentDate = selectedDate || date;
