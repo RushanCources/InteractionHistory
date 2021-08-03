@@ -4,7 +4,7 @@ import { getContactDetailsResponse, getInteractionResponse } from '../../store/s
 import { getContactDetails } from '../../store/slice/contactDetailsSlice';
 import LoadContainer from '../common/LoadContainer/LoadContainer';
 import ContactDetails from './ContactDetails/ContactDetails';
-import stylesMain, { WHITE } from '../../styles.global';
+import stylesMain, { DARK_BLUE, WHITE } from '../../styles.global';
 
 const ContactDetailsTab = () => {
   const { currentContact } = useSelector(getInteractionResponse);
@@ -21,7 +21,7 @@ const ContactDetailsTab = () => {
       error={contactDetails.error}
       styleContainer={stylesMain.containerWhite}
       styleLoadContainer={[stylesMain.containerVerticalCenter, stylesMain.containerWhite]}
-      colorload={WHITE}
+      colorload={DARK_BLUE}
     >
       <ContactDetails {...contactDetails} />
     </LoadContainer>

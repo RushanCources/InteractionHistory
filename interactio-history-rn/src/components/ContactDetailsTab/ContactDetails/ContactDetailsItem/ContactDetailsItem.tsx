@@ -47,7 +47,7 @@ const ContactDetailsItem = ({ communicationMethod, telOrNumer }: IContactDetails
 
       }}
     >
-      <View style={[stylesMain.itemContainerBorderLeftDarkBlue, stylesMain.containerRow]}>
+      <View style={[stylesMain.itemContainerBorderDown, stylesMain.containerRow]}>
         {IconCommunicationMethod}
         <View>
           <Text style={stylesMain.itemTitleSmallBlue}>{communicationMethod}</Text>

@@ -1,14 +1,33 @@
-import React, { useCallback } from 'react';
-import { FlatList } from 'react-native-gesture-handler';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import { TouchableOpacity, View, Text } from 'react-native';
-import { TContactsRecentsState } from '../../../store/type';
-import stylesMain from '../../../styles.global'
+import React, { useCallback, useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
+import { TouchableOpacity, View, Text, Animated } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { TContactsRecentsState } from '../../../store/type';
 import { getContactsListResponse } from '../../../store/selectors';
 import ContactNameBlock from '../../common/ContactNameBlock/ContactNameBlock';
+import stylesMain from '../../../styles.global'
 
 const RecentsList = (props: TContactsRecentsState) => {
+  const transformY = useRef(
+    new Animated.Value(70)
+  ).current
+  const opacity = useRef(
+    new Animated.Value(0)
+  ).current
+
+  useEffect(() => {
+    Animated.timing(transformY, {
+      toValue: 0,
+      delay: 300,
+      useNativeDriver: true,
+    }).start()
+    Animated.timing(opacity, {
+      toValue: 1,
+      delay: 300,
+      useNativeDriver: true,
+    }).start()
+  }, [])
+
   const { response: recordsList } = props;
   const { response: contactsList } = useSelector(getContactsListResponse);
 
@@ -41,9 +60,12 @@ const RecentsList = (props: TContactsRecentsState) => {
 
   return (
     <SafeAreaView style={[stylesMain.containerPadding, stylesMain.mt60]} >
-      {recordsList && <FlatList
+      {recordsList && <Animated.FlatList
+        style={{
+          transform: [{ translateY: transformY }],
+          opacity: opacity,
+        }}
         data={sortRecordsList}
-        keyExtractor={(item => item.id)}
         renderItem={renederItem}
       />
       }

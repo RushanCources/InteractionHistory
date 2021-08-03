@@ -1,6 +1,7 @@
 import { StyleSheet } from "react-native";
 
 export const WHITE = "#fff";
+export const GREY = "#dcdcdc";
 export const BLUE = "#337ab7";
 export const DARK_BLUE = "#103552";
 
@@ -58,7 +59,8 @@ const stylesMain = StyleSheet.create({
     paddingRight: 30,
   },
   navTitle: {
-    fontSize: 40,
+    fontSize: 36,
+    fontWeight: '700',
     textAlign: "center",
     color: WHITE,
   },
@@ -91,6 +93,13 @@ const stylesMain = StyleSheet.create({
     paddingLeft: 20,
     borderLeftWidth: 5,
     borderLeftColor: DARK_BLUE,
+  },
+  itemContainerBorderDown: {
+    marginBottom: 15,
+    marginHorizontal: 20,
+    paddingBottom: 10,
+    borderBottomWidth: 2,
+    borderColor: GREY,
   },
   itemTitleBigDarkBlue: {
     fontSize: 28,
