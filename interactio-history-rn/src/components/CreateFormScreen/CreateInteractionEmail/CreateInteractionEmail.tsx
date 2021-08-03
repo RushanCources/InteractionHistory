@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import InteractionInput from '../../InteractionInput/InteractionInput';
+import InteractionInput from '../InteractionInput/InteractionInput';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import {
   StyleSheet,
@@ -15,7 +15,8 @@ import Icon from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 import Feather from 'react-native-vector-icons/Feather';
 import {Formik} from 'formik';
 import * as yup from 'yup';
-import {TContactDetailsState} from '../../../../store/type';
+import {TContactDetailsState} from '../../../store/type';
+import navigation from '../../../navigation/navigation';
 
 const reasonData = ['Private', 'Proposal'];
 const outcomeData = ['Connected', 'Not connected'];
@@ -76,7 +77,7 @@ const CreateInteractionEmail = (props: TContactDetailsState) => {
         validationSchema={schema}
         onSubmit={values => {
           if (submit) {
-            // navigation.navigate('NavigationTab');
+            navigation.pop();
           }
           console.log(values);
         }}>

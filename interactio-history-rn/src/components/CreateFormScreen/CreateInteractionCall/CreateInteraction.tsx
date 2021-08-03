@@ -21,6 +21,7 @@ import {
   getContactDetailsResponse,
   getInteractionResponse,
 } from '../../../store/selectors';
+import navigation from '../../../navigation/navigation';
 
 const reasonData = ['Private', 'Proposal'];
 const outcomeData = ['Connected', 'Not connected'];
@@ -30,11 +31,6 @@ const updateLayout = () => {
 };
 
 const schema = yup.object({
-  email: yup
-    .string()
-    .email('Please, enter a valid email')
-    .required('Email is required field')
-    .min(6),
   description: yup.string().required('Description is required field'),
   date: yup.string().required('Please, choose a date'),
 });
@@ -86,7 +82,7 @@ const CreateInteractionCall = (props: TContactDetailsState) => {
         validationSchema={schema}
         onSubmit={values => {
           if (submit) {
-            // navigation.navigate('NavigationTab');
+            navigation.pop();
           }
           console.log(values);
         }}>

@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import {SafeAreaView} from 'react-native';
 import stylesMain from '../../styles.global';
-import CreateInteractionEmail from './CreateInteractionEmail/CreateInteractionCall/CreateInteractionEmail';
+import CreateInteractionEmail from './CreateInteractionEmail/CreateInteractionEmail';
 import CreateInteractionCall from './CreateInteractionCall/CreateInteraction';
 import CreateInteractionMeeting from './CreateInteractionMeeting/CreateInteractionMeeting';
 import {useDispatch, useSelector} from 'react-redux';
