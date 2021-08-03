@@ -40,7 +40,7 @@ const RecentsList = (props: TContactsRecentsState) => {
   }, [])
 
   return (
-    <SafeAreaView style={stylesMain.containerPadding} >
+    <SafeAreaView style={[stylesMain.containerPadding, stylesMain.mt60]} >
       {recordsList && <FlatList
         data={sortRecordsList}
         keyExtractor={(item => item.id)}

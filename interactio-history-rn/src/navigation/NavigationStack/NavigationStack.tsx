@@ -33,7 +33,13 @@ const NavigationStack = () => {
         <Stack.Screen
           name="RecentsScreen"
           component={RecentsScreen}
-          options={{ title: 'Recents' }}
+          options={{ 
+            title: 'Recents',
+            headerTransparent:true,
+            headerStyle: stylesMain.navHeaderSmall,
+            headerTitleStyle: stylesMain.titleMediumWhite,
+            headerBackImage: () => <IconBack />,
+          }}
         />
         <Stack.Screen
           name="CreateFormScreen"

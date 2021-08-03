@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getContactsListResponse } from '../../store/selectors'
+import { getContactsListResponse } from '../../store/selectors';
 import { getContactsList } from '../../store/slice/contactsListSlice';
-import stylesMain, { WHITE } from '../../styles.global'
+import stylesMain from '../../styles.global';
 import LoadContainer from '../common/LoadContainer/LoadContainer';
 import ContactList from './ContactList/ContactList';
 import { ImageBackground } from 'react-native';
@@ -19,7 +19,7 @@ const ContactsScreen = () => {
     <ImageBackground
       source={require('../../img/Homepage.jpg')}
       style={stylesMain.imageBackground}
-      >
+    >
       <LoadContainer
         loading={contactsList.loading}
         error={contactsList.error}

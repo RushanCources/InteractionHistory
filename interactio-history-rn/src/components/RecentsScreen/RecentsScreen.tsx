@@ -13,7 +13,7 @@ const RecentsScreen = () => {
 
   useEffect(() => {
     dispatch(getContactsRecents());
-  }, [dispatch])  
+  }, [dispatch])
 
   return (
     <ImageBackground

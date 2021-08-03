@@ -2,9 +2,24 @@ import { StyleSheet } from "react-native";
 
 export const WHITE = "#fff";
 export const BLUE = "#337ab7";
-export const DARK_BLUE = "#183147";
+export const DARK_BLUE = "#103552";
 
 const stylesMain = StyleSheet.create({
+  mt10: {
+    marginTop: 10,
+  },
+  mt60: {
+    marginTop: 60,
+  },
+  mr15: {
+    marginRight: 15,
+  },
+  mb20: {
+    marginBottom: 20,
+  },
+  pr150: {
+    paddingRight: 150,
+  },
   container: {
     flex: 1,
     paddingVertical: 20,
@@ -38,6 +53,30 @@ const stylesMain = StyleSheet.create({
   containerVerticalCenter: {
     justifyContent: "space-around",
     padding: 10,
+  },
+  containerNavTitle: {
+    paddingRight: 30,
+  },
+  navTitle: {
+    fontSize: 40,
+    textAlign: "center",
+    color: WHITE,
+  },
+  NavDescr: {
+    fontSize: 16,
+    textAlign: "center",
+    color: WHITE,
+  },
+  stackNavHeaderBigDarkBlue: {
+    height: 150,
+    backgroundColor: DARK_BLUE,
+  },
+  navHeaderSmall: {
+    height: 80,
+  },
+  navHeaderSmallDarkBlue: {
+    height: 70,
+    backgroundColor: DARK_BLUE,
   },
   itemContainerWhite: {
     marginBottom: 10,
@@ -73,23 +112,6 @@ const stylesMain = StyleSheet.create({
     fontSize: 16,
     color: DARK_BLUE,
   },
-  containerNavTitle: {
-    paddingRight: 30,
-  },
-  stackNavHeaderBigDarkBlue: {
-    height: 150,
-    backgroundColor: DARK_BLUE,
-  },
-  navTitle: {
-    fontSize: 40,
-    textAlign: "center",
-    color: WHITE,
-  },
-  NavDescr: {
-    fontSize: 16,
-    textAlign: "center",
-    color: WHITE,
-  },
   imageBackground: {
     flex: 1,
     width: "100%",
@@ -108,18 +130,6 @@ const stylesMain = StyleSheet.create({
     borderWidth: 3,
     borderColor: DARK_BLUE,
   },
-  pr150: {
-    paddingRight: 150,
-  },
-  mt10: {
-    marginTop: 10,
-  },
-  mb20: {
-    marginBottom: 20,
-  },
-  mr15: {
-    marginRight: 15,
-  },
   absoluteRitghtBlock: {
     position: "absolute",
     top: "50%",
@@ -133,6 +143,11 @@ const stylesMain = StyleSheet.create({
     fontSize: 40,
     fontWeight: "700",
     color: WHITE,
+  },
+  titleMediumWhite: {
+    color: 'white',
+    fontWeight: '700',
+    fontSize: 32,
   },
   btn: {
     paddingVertical: 10,
