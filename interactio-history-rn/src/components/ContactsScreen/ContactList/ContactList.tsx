@@ -3,11 +3,11 @@ import navigation from '../../../navigation/navigation'
 import { useDispatch } from 'react-redux';
 import { FlatList } from 'react-native-gesture-handler';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { TouchableOpacity } from 'react-native';
+import { Image, TouchableOpacity, View } from 'react-native';
 import ContactNameBlock from '../../common/ContactNameBlock/ContactNameBlock';
 import { TContactsListState } from '../../../store/type';
-import { setCurrentId } from '../../../store/slice';
-import stylesMain from '../../../styles.global'
+import { setCurrentId } from '../../../store/contactInteractionsSlice';
+import stylesMain, { DARK_BLUE } from '../../../styles.global'
 
 const ContactScreenItem = (props: TContactsListState) => {
   const dispatch = useDispatch()
@@ -21,19 +21,24 @@ const ContactScreenItem = (props: TContactsListState) => {
           dispatch(setCurrentId(item.item.id))
           navigation.navigate('ContactInformationScreen')
         }}>
-        <ContactNameBlock
-          item={item.item}
-          styleContainer={stylesMain.itemContainerWhite}
-          styleRow={stylesMain.containerRow}
-          styleTitle={stylesMain.itemTitleBigDarkBlue}
-          styleDescr={stylesMain.itemDescrSmallDarkBlue}
-        />
+        <View style={[stylesMain.itemContainerWhite, stylesMain.containerRow]}>
+          <Image
+            source={require('../../../img/img-client.png')}
+            style={stylesMain.itemImageClient}
+          />
+          <ContactNameBlock
+            item={item.item}
+            styleRow={stylesMain.containerRow}
+            styleTitle={stylesMain.itemTitleBigDarkBlue}
+            styleDescr={stylesMain.itemDescrSmallDarkBlue}
+          />
+        </View>
       </TouchableOpacity >
     )
   }, [])
 
   return (
-    <SafeAreaView>
+    <SafeAreaView style={stylesMain.containerPadding} >
       {response && <FlatList
         data={response}
         keyExtractor={(item => item.id)}

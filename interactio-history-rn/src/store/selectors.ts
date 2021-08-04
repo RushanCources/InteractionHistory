@@ -24,7 +24,7 @@ export const getContactsListResponse = createSelector(
 
 export const getContactDetailsResponse = createSelector(
   getContactDetails,
-  ({ response, loading, error, currentContact }) => ({response, loading, error, currentContact})
+  ({ response, loading, error, methodCommunication }) => ({response, loading, error, methodCommunication})
 );
 
 
