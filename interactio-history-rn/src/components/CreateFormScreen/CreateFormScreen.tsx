@@ -9,7 +9,7 @@ import {
   getContactDetailsResponse,
   getInteractionResponse,
 } from '../../store/selectors';
-import {getContactDetails} from '../../store/contactDetailsSlice';
+import {getContactDetails} from '../../store/slice/contactDetailsSlice';
 import LoadContainer from '../common/LoadContainer/LoadContainer';
 import {WHITE} from '../../styles.global';
 

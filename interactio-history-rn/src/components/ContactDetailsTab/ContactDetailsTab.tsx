@@ -7,7 +7,7 @@ import ContactDetails from './ContactDetails/ContactDetails';
 import stylesMain, { DARK_BLUE, WHITE } from '../../styles.global';
 
 const ContactDetailsTab = () => {
-  const {currentContact} = useSelector(getInteractionResponse);
+  const { currentContact } = useSelector(getInteractionResponse);
   const contactDetails = useSelector(getContactDetailsResponse);
   const dispatch = useDispatch();
 
@@ -22,6 +22,7 @@ const ContactDetailsTab = () => {
       styleContainer={stylesMain.containerWhite}
       styleLoadContainer={[stylesMain.containerVerticalCenter, stylesMain.containerWhite]}
       colorload={DARK_BLUE}
+    >
       <ContactDetails {...contactDetails} />
     </LoadContainer>
   );

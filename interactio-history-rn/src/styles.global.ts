@@ -121,23 +121,6 @@ const stylesMain = StyleSheet.create({
     fontSize: 16,
     color: DARK_BLUE,
   },
-  containerNavTitle: {
-    paddingRight: 30,
-  },
-  stackNavHeaderBigDarkBlue: {
-    height: 200,
-    backgroundColor: DARK_BLUE,
-  },
-  navTitle: {
-    fontSize: 40,
-    textAlign: 'center',
-    color: WHITE,
-  },
-  NavDescr: {
-    fontSize: 16,
-    textAlign: 'center',
-    color: WHITE,
-  },
   imageBackground: {
     flex: 1,
     width: '100%',
