@@ -1,10 +1,30 @@
-import React from 'react';
-import { SafeAreaView, Text } from 'react-native';
+import React, { useEffect, useRef } from 'react';
+import { Animated, SafeAreaView, Text } from 'react-native';
 import { TContactDetailsState } from '../../../store/type';
 import stylesMain from '../../../styles.global';
 import ContactDetailsItem from './ContactDetailsItem/ContactDetailsItem';
 
 const ContactDetails = (props: TContactDetailsState) => {
+  const transformY = useRef(
+    new Animated.Value(40)
+  ).current
+  const opacity = useRef(
+    new Animated.Value(0)
+  ).current
+
+  useEffect(() => {
+    Animated.timing(transformY, {
+      toValue: 0,
+      delay: 300,
+      useNativeDriver: true,
+    }).start()
+    Animated.timing(opacity, {
+      toValue: 1,
+      delay: 300,
+      useNativeDriver: true,
+    }).start()
+  }, [])
+
   const { response } = props
 
   const mobile = response.mobile;
@@ -14,7 +34,12 @@ const ContactDetails = (props: TContactDetailsState) => {
 
   if (mobile || email || work || skype) {
     return (
-      <SafeAreaView>
+      <Animated.View
+        style={{
+          transform: [{ translateY: transformY }],
+          opacity: opacity,
+        }}
+      >
         {mobile &&
           <ContactDetailsItem
             communicationMethod='Mobile'
@@ -42,7 +67,7 @@ const ContactDetails = (props: TContactDetailsState) => {
             telOrNumer={skype}
           />
         }
-      </SafeAreaView>
+      </Animated.View>
     );
   } else {
     return (

@@ -6,6 +6,7 @@ import ContactInformationScreen from '../ContactInformationScreen/ContactInforma
 import MainTabs from '../../components/CreateFormScreen/InteractionsTabs/MainTabs';
 import ContactInformationTitleNavigation from './ContactDetailsTitleNav/ContactDetailsTitleNav';
 import Navigation from '../navigation';
+import RecentsScreen from '../../components/RecentsScreen/RecentsScreen';
 import stylesMain from '../../styles.global';
 import IconBack from './IconBack';
 import CreateFormScreen from '../../components/CreateFormScreen/CreateFormScreen';
@@ -19,14 +20,25 @@ const NavigationStack = () => {
         <Stack.Screen
           name="ContactsScreen"
           component={ContactsScreen}
-          options={{title: 'Contacts'}}
+          options={{ headerShown: false}}
         />
         <Stack.Screen
           name="ContactInformationScreen"
           component={ContactInformationScreen}
           options={{
             headerStyle: stylesMain.stackNavHeaderBigDarkBlue,
-            headerTitle: props => <ContactInformationTitleNavigation />,
+            headerTitle: () => <ContactInformationTitleNavigation />,
+            headerBackImage: () => <IconBack />,
+          }}
+        />
+        <Stack.Screen
+          name="RecentsScreen"
+          component={RecentsScreen}
+          options={{ 
+            title: 'Recents',
+            headerTransparent:true,
+            headerStyle: stylesMain.navHeaderSmall,
+            headerTitleStyle: stylesMain.titleMediumWhite,
             headerBackImage: () => <IconBack />,
           }}
         />

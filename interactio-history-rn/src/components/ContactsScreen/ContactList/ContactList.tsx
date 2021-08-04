@@ -1,15 +1,34 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect, useRef } from 'react';
 import navigation from '../../../navigation/navigation'
 import { useDispatch } from 'react-redux';
-import { FlatList } from 'react-native-gesture-handler';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { Image, TouchableOpacity, View } from 'react-native';
+import { Image, TouchableOpacity, View, Text, Animated } from 'react-native';
 import ContactNameBlock from '../../common/ContactNameBlock/ContactNameBlock';
 import { TContactsListState } from '../../../store/type';
-import { setCurrentId } from '../../../store/contactInteractionsSlice';
-import stylesMain, { DARK_BLUE } from '../../../styles.global'
+import { setCurrentId } from '../../../store/slice/contactInteractionsSlice';
+import stylesMain from '../../../styles.global'
 
-const ContactScreenItem = (props: TContactsListState) => {
+const ContactList = (props: TContactsListState) => {
+  const transformY = useRef(
+    new Animated.Value(70)
+  ).current
+  const opacity = useRef(
+    new Animated.Value(0)
+  ).current
+
+  useEffect(() => {
+    Animated.timing(transformY, {
+      toValue: 0,
+      delay: 300,
+      useNativeDriver: true,
+    }).start()
+    Animated.timing(opacity, {
+      toValue: 1,
+      delay: 300,
+      useNativeDriver: true,
+    }).start()
+  }, [])
+
   const dispatch = useDispatch()
 
   const { response } = props
@@ -24,7 +43,7 @@ const ContactScreenItem = (props: TContactsListState) => {
         <View style={[stylesMain.itemContainerWhite, stylesMain.containerRow]}>
           <Image
             source={require('../../../img/img-client.png')}
-            style={stylesMain.itemImageClient}
+            style={[stylesMain.itemImageClient, stylesMain.mr15,]}
           />
           <ContactNameBlock
             item={item.item}
@@ -38,10 +57,23 @@ const ContactScreenItem = (props: TContactsListState) => {
   }, [])
 
   return (
-    <SafeAreaView style={stylesMain.containerPadding} >
-      {response && <FlatList
+    <SafeAreaView style={stylesMain.containerPadding}>
+      <Animated.View style={[{ opacity: opacity }, stylesMain.containerRow, stylesMain.containerVerticalCenter, stylesMain.mb20]}>
+        <Text style={[stylesMain.titleBigWhite]}>Contacts</Text>
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate('RecentsScreen')
+          }}
+        >
+          <Text style={[stylesMain.btn, stylesMain.mt10]}>Recents</Text>
+        </TouchableOpacity>
+      </Animated.View>
+      {response && <Animated.FlatList
+        style={{
+          transform: [{ translateY: transformY }],
+          opacity: opacity,
+        }}
         data={response}
-        keyExtractor={(item => item.id)}
         renderItem={renederItem}
       />
       }
@@ -49,4 +81,4 @@ const ContactScreenItem = (props: TContactsListState) => {
   );
 };
 
-export default ContactScreenItem;
+export default ContactList;

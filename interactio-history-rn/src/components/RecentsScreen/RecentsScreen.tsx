@@ -1,18 +1,18 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getContactsListResponse } from '../../store/selectors';
-import { getContactsList } from '../../store/slice/contactsListSlice';
-import stylesMain from '../../styles.global';
+import { getContactsRecentsResponse } from '../../store/selectors'
+import stylesMain from '../../styles.global'
 import LoadContainer from '../common/LoadContainer/LoadContainer';
-import ContactList from './ContactList/ContactList';
 import { ImageBackground } from 'react-native';
+import { getContactsRecents } from '../../store/slice/contactsRecentsSlice';
+import RecentsList from './RecentsList/RecentsList';
 
-const ContactsScreen = () => {
-  const contactsList = useSelector(getContactsListResponse);
+const RecentsScreen = () => {
+  const contactsRecents = useSelector(getContactsRecentsResponse);
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(getContactsList());
+    dispatch(getContactsRecents());
   }, [dispatch])
 
   return (
@@ -21,14 +21,14 @@ const ContactsScreen = () => {
       style={stylesMain.imageBackground}
     >
       <LoadContainer
-        loading={contactsList.loading}
-        error={contactsList.error}
+        loading={contactsRecents.loading}
+        error={contactsRecents.error}
         styleLoadContainer={[stylesMain.containerVerticalCenter, stylesMain.container]}
       >
-        <ContactList {...contactsList} />
+        <RecentsList {...contactsRecents} />
       </LoadContainer>
     </ImageBackground>
   );
 }
 
-export default React.memo(ContactsScreen);
+export default React.memo(RecentsScreen);
