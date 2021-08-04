@@ -38,24 +38,32 @@ const RecentsList = (props: TContactsRecentsState) => {
   })
 
   const renederItem = useCallback(item => {
-    return (
-      <TouchableOpacity
-        onPress={() => {
-        }}>
-        <View style={[stylesMain.itemContainerWhite, stylesMain.pr150]}>
-          <ContactNameBlock
-            item={contactsList.find(obg => obg.id === item.item.contact_id) || {}}
-            styleRow={[stylesMain.containerRow]}
-            styleTitle={stylesMain.itemTitleSmallBlue}
-            styleDescr={stylesMain.itemDescrSmallDarkBlue}
-          />
-          <Text style={[stylesMain.itemDescrMediumDarkBlue, stylesMain.mt10]}>{item.item.description}</Text>
-          <View style={stylesMain.absoluteRitghtBlock}>
-            <Text style={stylesMain.itemTime}>{getlastData(item.item.date)}</Text>
+    if (item.item.contact_id) {
+      return (
+        <TouchableOpacity
+          onPress={() => {
+          }}>
+          <View style={[stylesMain.itemContainerWhite, stylesMain.pr150]}>
+            <ContactNameBlock
+              item={contactsList.find(obg => obg.id === item.item.contact_id) || {}}
+              styleRow={[stylesMain.containerRow]}
+              styleTitle={stylesMain.itemTitleSmallBlue}
+              styleDescr={stylesMain.itemDescrSmallDarkBlue}
+            />
+            <Text style={[stylesMain.itemDescrMediumDarkBlue, stylesMain.mt10]}>{item.item.description || "unknow"}</Text>
+            <View style={stylesMain.absoluteRitghtBlock}>
+              <Text style={stylesMain.itemTime}>
+                {
+                  (item.item.date) ? getlastData(item.item.date) : "unknow"
+                }
+              </Text>
+            </View>
           </View>
-        </View>
-      </TouchableOpacity >
-    )
+        </TouchableOpacity >
+      )
+    } else {
+      return null;
+    }
   }, [])
 
   return (
@@ -103,7 +111,7 @@ function getlastData(date: string): string {
   }
 
   if (pasteTime < DAY_TIME_MILLISECOND) {
-    return `${hours}:${minutes}}`
+    return `${hours}:${minutes}`
   } else if (pasteTime < 2 * DAY_TIME_MILLISECOND) {
     return 'Yesterday'
   } else if (pasteTime < 7 * DAY_TIME_MILLISECOND) {
