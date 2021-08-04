@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 import CreateInteraction from '../CreateInteractionCall/CreateInteraction';
 import CreateInteractionEmail from '../CreateInteractionEmail/CreateInteractionEmail';
-import {getContactDetails} from '../../../store/contactDetailsSlice';
+import {getContactDetails} from '../../../store/slice/contactDetailsSlice';
 //import LoadContainer from '../common/LoadContainer/LoadContainer';
 import {useDispatch, useSelector} from 'react-redux';
 import {

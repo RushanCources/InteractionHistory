@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import { FlatList, SafeAreaView, Text, View, StyleSheet } from 'react-native';
+import { FlatList, SafeAreaView, Text, View } from 'react-native';
 import { TState } from '../../../store/type';
 import stylesMain from '../../../styles.global';
 

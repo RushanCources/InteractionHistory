@@ -8,7 +8,7 @@ import ContactInformationTitleNavigation from './ContactDetailsTitleNav/ContactD
 import Navigation from '../navigation';
 import RecentsScreen from '../../components/RecentsScreen/RecentsScreen';
 import stylesMain from '../../styles.global';
-import IconBack from './IconBack';
+import IconBack from '../../components/icons/IconBack';
 import CreateFormScreen from '../../components/CreateFormScreen/CreateFormScreen';
 
 const Stack = createStackNavigator();
