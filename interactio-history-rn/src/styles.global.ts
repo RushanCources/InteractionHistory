@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native";
+import {StyleSheet} from 'react-native';
 
 export const WHITE = "#fff";
 export const GREY = "#dcdcdc";
@@ -48,11 +48,11 @@ const stylesMain = StyleSheet.create({
     alignItems: 'center',
   },
   containerRowCenter: {
-    flexDirection: "row",
-    justifyContent: "center",
+    flexDirection: 'row',
+    justifyContent: 'center',
   },
   containerVerticalCenter: {
-    justifyContent: "space-around",
+    justifyContent: 'space-around',
     padding: 10,
   },
   containerNavTitle: {
@@ -121,10 +121,27 @@ const stylesMain = StyleSheet.create({
     fontSize: 16,
     color: DARK_BLUE,
   },
+  containerNavTitle: {
+    paddingRight: 30,
+  },
+  stackNavHeaderBigDarkBlue: {
+    height: 200,
+    backgroundColor: DARK_BLUE,
+  },
+  navTitle: {
+    fontSize: 40,
+    textAlign: 'center',
+    color: WHITE,
+  },
+  NavDescr: {
+    fontSize: 16,
+    textAlign: 'center',
+    color: WHITE,
+  },
   imageBackground: {
     flex: 1,
-    width: "100%",
-    height: "100%",
+    width: '100%',
+    height: '100%',
   },
   itemImageClient: {
     width: 60,
