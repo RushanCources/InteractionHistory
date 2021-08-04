@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { getInteractionResponse } from '../../store/selectors';
-import { getContactInteractions } from '../../store/contactInteractionsSlice';
-import stylesMain, { WHITE } from '../../styles.global';
+import React, {useEffect} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
+import {getInteractionResponse} from '../../store/selectors';
+import {getContactInteractions} from '../../store/contactInteractionsSlice';
+import stylesMain, {WHITE} from '../../styles.global';
 import LoadContainer from '../common/LoadContainer/LoadContainer';
 import ContactInteractionsItem from './Component/ContactInteractionsItem';
 
@@ -19,9 +19,11 @@ const ContactInteractionsTab = () => {
       loading={interactions.loading}
       error={interactions.error}
       styleContainer={stylesMain.containerWhite}
-      styleLoadContainer={[stylesMain.containerVerticalCenter, stylesMain.containerWhite]}
-      colorload={WHITE}
-    >
+      styleLoadContainer={[
+        stylesMain.containerVerticalCenter,
+        stylesMain.containerWhite,
+      ]}
+      colorload={WHITE}>
       <ContactInteractionsItem {...interactions} />
     </LoadContainer>
   );

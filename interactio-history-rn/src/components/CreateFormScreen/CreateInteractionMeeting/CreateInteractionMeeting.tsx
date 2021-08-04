@@ -15,8 +15,10 @@ import Icon from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 import Feather from 'react-native-vector-icons/Feather';
 import {Formik} from 'formik';
 import * as yup from 'yup';
-import {TContactDetailsState} from '../../../store/type';
+import {TContactDetailsState, Tresponse} from '../../../store/type';
 import navigation from '../../../navigation/navigation';
+import axios from 'axios';
+import {CONFIG} from '../../../config';
 
 const reasonData = ['Private', 'Proposal'];
 const outcomeData = ['Connected', 'Not connected'];
@@ -73,6 +75,20 @@ const CreateInteractionMeeting = (props: TContactDetailsState) => {
         onSubmit={values => {
           if (submit) {
             navigation.pop();
+
+            axios.get(`${CONFIG.BASE_URL}/records`).then(responseGet => {
+              const data: Tresponse = {
+                id: responseGet.data.length + 1,
+                date: formattedDate,
+                description: values.description,
+                contact_id: response.id,
+                type: {
+                  id: 3,
+                  name: 'Meeting',
+                },
+              };
+              axios.post(`${CONFIG.BASE_URL}/records`, data);
+            });
           }
           console.log(values);
         }}>
@@ -206,7 +222,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   text: {fontSize: 17},
-  dropdown: {padding: 20, position: 'relative'},
+  dropdown: {padding: 20},
   dropdownBtn: {
     marginBottom: 10,
     fontSize: 17,

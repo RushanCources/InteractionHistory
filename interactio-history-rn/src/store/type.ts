@@ -17,7 +17,7 @@ export type Tresponse = {
   id: number;
   date: string;
   description: string;
-  contact_id: string;
+  contact_id?: string;
   type: {
     id: number;
     name: string;

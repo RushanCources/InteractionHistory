@@ -6,8 +6,9 @@ import {CONFIG} from '../config';
 export const getContactInteractions = createAsyncThunk(
   'interactions/getContactInteractions',
   async (id: string) => {
-    const response = await fetch(`${CONFIG.BASE_URL}/contacts/${id}/records`)
-      .then(res => res.json())
+    const response = await fetch(
+      `${CONFIG.BASE_URL}/contacts/${id}/records`,
+    ).then(res => res.json());
     return response;
   },
 );
@@ -47,4 +48,4 @@ const interactionsSlice = createSlice({
 });
 
 export default interactionsSlice.reducer;
-export const { setCurrentId } = interactionsSlice.actions;
+export const {setCurrentId} = interactionsSlice.actions;

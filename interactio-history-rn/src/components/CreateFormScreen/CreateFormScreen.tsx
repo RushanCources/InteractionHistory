@@ -10,19 +10,20 @@ import {
   getInteractionResponse,
 } from '../../store/selectors';
 import {getContactDetails} from '../../store/contactDetailsSlice';
-import LoadContainer from '../common/LoadContainer/LoadContainer';
-import {WHITE} from '../../styles.global';
+import {getContactInteractions} from '../../store/contactInteractionsSlice';
+import {postContactInteraction} from '../../store/postFormDataSlice';
 
 const CreateFormScreen = () => {
   const {methodCommunication} = useSelector(getContactDetailsResponse);
   console.log('methodCommunication: ', methodCommunication);
 
-  const {currentContact} = useSelector(getInteractionResponse);
-  const contactDetails = useSelector(getContactDetailsResponse);
   const dispatch = useDispatch();
 
+  const interactions = useSelector(getInteractionResponse);
+  const contactDetails = useSelector(getContactDetailsResponse);
+
   useEffect(() => {
-    dispatch(getContactDetails(currentContact));
+    dispatch(getContactDetails(interactions.currentContact));
   }, [dispatch]);
 
   const renderEmailForm = methodCommunication === 'Mail' && (
