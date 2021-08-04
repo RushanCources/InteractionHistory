@@ -1,16 +1,7 @@
-<<<<<<< HEAD
 import React, {useCallback} from 'react';
 import {FlatList, SafeAreaView, Text, View, StyleSheet} from 'react-native';
 import {TState} from '../../../store/type';
-||||||| 94106ab
-import React, { useCallback } from 'react';
-import { FlatList, SafeAreaView, Text, View, StyleSheet } from 'react-native';
-import { TState } from '../../../store/type';
-=======
-import React, { useCallback } from 'react';
-import { FlatList, SafeAreaView, Text, View } from 'react-native';
-import { TState } from '../../../store/type';
->>>>>>> origin
+
 import stylesMain from '../../../styles.global';
 
 const ContactInteractionsTabItem = (props: TState) => {

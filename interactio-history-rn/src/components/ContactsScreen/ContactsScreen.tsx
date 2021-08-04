@@ -1,22 +1,8 @@
-<<<<<<< HEAD
 import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {getContactsListResponse} from '../../store/selectors';
-import {getContactsList} from '../../store/contactsListSlice';
-import stylesMain, {WHITE} from '../../styles.global';
-||||||| 94106ab
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { getContactsListResponse } from '../../store/selectors'
-import { getContactsList } from '../../store/contactsListSlice';
-import stylesMain, { WHITE } from '../../styles.global'
-=======
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { getContactsListResponse } from '../../store/selectors';
-import { getContactsList } from '../../store/slice/contactsListSlice';
+import {getContactsList} from '../../store/slice/contactsListSlice';
 import stylesMain from '../../styles.global';
->>>>>>> origin
 import LoadContainer from '../common/LoadContainer/LoadContainer';
 import ContactList from './ContactList/ContactList';
 import {ImageBackground} from 'react-native';
@@ -32,30 +18,14 @@ const ContactsScreen = () => {
   return (
     <ImageBackground
       source={require('../../img/Homepage.jpg')}
-<<<<<<< HEAD
       style={stylesMain.imageBackground}>
-||||||| 94106ab
-      style={stylesMain.imageBackground}
-      >
-=======
-      style={stylesMain.imageBackground}
-    >
->>>>>>> origin
       <LoadContainer
         loading={contactsList.loading}
         error={contactsList.error}
-<<<<<<< HEAD
         styleLoadContainer={[
           stylesMain.containerVerticalCenter,
-          stylesMain.containerDarkBlue,
+          stylesMain.container,
         ]}>
-||||||| 94106ab
-        styleLoadContainer={[stylesMain.containerVerticalCenter, stylesMain.containerDarkBlue]}
-      >
-=======
-        styleLoadContainer={[stylesMain.containerVerticalCenter, stylesMain.container]}
-      >
->>>>>>> origin
         <ContactList {...contactsList} />
       </LoadContainer>
     </ImageBackground>
