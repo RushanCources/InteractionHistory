@@ -9,9 +9,7 @@ import {
   getContactDetailsResponse,
   getInteractionResponse,
 } from '../../store/selectors';
-import {getContactDetails} from '../../store/contactDetailsSlice';
-import {getContactInteractions} from '../../store/contactInteractionsSlice';
-import {postContactInteraction} from '../../store/postFormDataSlice';
+import {getContactDetails} from '../../store/slice/contactDetailsSlice';
 
 const CreateFormScreen = () => {
   const {methodCommunication} = useSelector(getContactDetailsResponse);

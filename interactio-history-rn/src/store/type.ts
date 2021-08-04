@@ -6,7 +6,7 @@ export type TNetworkErrorParams = {
 export class NetworkError extends Error {
   readonly status: number;
 
-  constructor({message, status = 502}: TNetworkErrorParams) {
+  constructor({ message, status = 502 }: TNetworkErrorParams) {
     super(message);
     this.status = status;
     this.name = this.constructor.name;
@@ -39,6 +39,17 @@ export type TStateType = {
   interactions: TState;
 };
 
+export type TContactDetailsState = {
+  response: TContactData;
+  error: null | NetworkError;
+  loading: boolean;
+  methodCommunication?: string;
+};
+
+export type TContactDetailsType = {
+  contactDetails: TContactDetailsState;
+};
+
 export type TContactData = {
   id?: string;
   firstName?: string;
@@ -54,17 +65,6 @@ export type TContactData = {
   };
 };
 
-export type TContactDetailsState = {
-  response: TContactData;
-  error: null | NetworkError;
-  loading: boolean;
-  methodCommunication?: string;
-};
-
-export type TContactDetailsType = {
-  contactDetails: TContactDetailsState;
-};
-
 export type TContactsListState = {
   response: TContactData[];
   error: null | NetworkError;
@@ -73,4 +73,25 @@ export type TContactsListState = {
 
 export type IContactsListType = {
   contactsList: TContactsListState;
+};
+
+export type TContactsRecents = {
+  id?: string;
+  date: string;
+  description: string;
+  contact_id: string;
+  type: { 
+    id: string; 
+    name: string 
+  };
+};
+
+export type TContactsRecentsState = {
+  response: TContactsRecents[];
+  error: null | NetworkError;
+  loading: boolean;
+};
+
+export type TContactsRecentsType = {
+  contactsRecents: TContactsRecentsState;
 };

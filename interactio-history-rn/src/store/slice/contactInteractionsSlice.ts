@@ -1,6 +1,6 @@
 import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
-import {Tresponse, TState, NetworkError} from './type';
-import {CONFIG} from '../config';
+import {Tresponse, TState, NetworkError} from '../type';
+import {CONFIG} from '../../config';
 
 //endpoint для запроса contact iteractions
 export const getContactInteractions = createAsyncThunk(

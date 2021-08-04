@@ -1,6 +1,6 @@
 import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
-import {NetworkError, TContactData, TContactDetailsState} from './type';
-import {CONFIG} from '../config';
+import {NetworkError, TContactData, TContactDetailsState} from '../type';
+import {CONFIG} from '../../config';
 
 export const getContactDetails = createAsyncThunk(
   'contactDetails/getContactDetails',

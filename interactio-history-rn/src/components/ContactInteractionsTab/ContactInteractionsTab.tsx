@@ -1,8 +1,22 @@
+<<<<<<< HEAD
 import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {getInteractionResponse} from '../../store/selectors';
 import {getContactInteractions} from '../../store/contactInteractionsSlice';
 import stylesMain, {WHITE} from '../../styles.global';
+||||||| 94106ab
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getInteractionResponse } from '../../store/selectors';
+import { getContactInteractions } from '../../store/contactInteractionsSlice';
+import stylesMain, { WHITE } from '../../styles.global';
+=======
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getInteractionResponse } from '../../store/selectors';
+import { getContactInteractions } from '../../store/slice/contactInteractionsSlice';
+import stylesMain, { WHITE } from '../../styles.global';
+>>>>>>> origin
 import LoadContainer from '../common/LoadContainer/LoadContainer';
 import ContactInteractionsItem from './Component/ContactInteractionsItem';
 

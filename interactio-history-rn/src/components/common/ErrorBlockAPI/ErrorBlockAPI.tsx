@@ -1,6 +1,5 @@
 import React from 'react';
 import { Text, View, SafeAreaView } from 'react-native';
-import stylesMain from '../../../styles.global'
 
 interface IErrorBlockAPIProps {
   styleContainer: object | Array<{}>
