@@ -15,8 +15,10 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Feather from 'react-native-vector-icons/Feather';
 import {Formik} from 'formik';
 import * as yup from 'yup';
-import {TContactDetailsState} from '../../../store/type';
+import {TContactDetailsState, Tresponse} from '../../../store/type';
 import navigation from '../../../navigation/navigation';
+import axios from 'axios';
+import {CONFIG} from '../../../config';
 
 const reasonData = ['Private', 'Proposal'];
 const outcomeData = ['Connected', 'Not connected'];
@@ -78,6 +80,20 @@ const CreateInteractionEmail = (props: TContactDetailsState) => {
         onSubmit={values => {
           if (submit) {
             navigation.pop();
+
+            axios.get(`${CONFIG.BASE_URL}/records`).then(responseGet => {
+              const data: Tresponse = {
+                id: responseGet.data.length + 1,
+                date: formattedDate,
+                description: values.description,
+                contact_id: response.id,
+                type: {
+                  id: 2,
+                  name: 'Email',
+                },
+              };
+              axios.post(`${CONFIG.BASE_URL}/records`, data);
+            });
           }
           console.log(values);
         }}>

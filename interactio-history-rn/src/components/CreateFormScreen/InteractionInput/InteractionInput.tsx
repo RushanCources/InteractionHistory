@@ -12,9 +12,9 @@ const InteractionInput: React.FC<{
     <>
       {modalOpen && (
         <View style={styles.dropdownContent}>
-          {data.map(option => (
+          {data.map((option, index) => (
             <TouchableOpacity
-              key={Math.random().toString()}
+              key={index}
               onPress={() => {
                 setValue(option);
                 setModalOpen(false);
